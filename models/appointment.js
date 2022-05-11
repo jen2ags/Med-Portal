@@ -51,7 +51,7 @@ Appointment.init(
     time: {
         type: DataTypes.TIME,
         allowNulll: false
-    }
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
