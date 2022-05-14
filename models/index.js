@@ -1,8 +1,8 @@
 // import all models
 const Appointment = require('./Appointment');
 const User = require('./User');
-const Vote = require('./Vote');
-const Comment = require('./Comment');
+const Note = require('./Note');
+const Doctor = require('./Doctor');
 
 // create associations
 User.hasMany(Appointment, {
@@ -19,23 +19,23 @@ Appointment.belongsTo(Doctor, {
   onDelete: 'SET NULL'
 });
 
-Comment.belongsTo(User, {
+Note.belongsTo(User, {
   foreignKey: 'user_id',
   onDelete: 'SET NULL'
 });
 
-Comment.belongsTo(Appointment, {
-  foreignKey: 'post_id',
+Note.belongsTo(Appointment, {
+  foreignKey: 'appointment_id',
   onDelete: 'SET NULL'
 });
 
-User.hasMany(Comment, {
+User.hasMany(Note, {
   foreignKey: 'user_id',
   onDelete: 'SET NULL'
 });
 
-Appointment.hasMany(Comment, {
-  foreignKey: 'post_id'
+Appointment.hasMany(Note, {
+  foreignKey: 'appointment_id'
 });
 
-module.exports = { User, Appointment, Comment };
+module.exports = { User, Appointment, Note, Doctor };
