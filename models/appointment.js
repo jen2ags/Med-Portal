@@ -20,7 +20,7 @@ Appointment.init(
       allowNull: false,
     },
     time: {
-        type: DataTypes.TIME,
+        type: DataTypes.STRING,
         allowNulll: false
     },
     user_id: {
