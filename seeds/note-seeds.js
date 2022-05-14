@@ -39,6 +39,6 @@ const notedata = [
   },
 ];
 
-const seedNotes = () => Comment.bulkCreate(notedata);
+const seedNotes = () => Note.bulkCreate(notedata);
 
 module.exports = seedNotes;
