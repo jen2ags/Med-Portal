@@ -1,22 +1,23 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Post, User, Comment, Vote } = require('../../models');
+const withAuth = require('../../utils/auth');
+const { Appointment, User, Note } = require('../../models');
 
 // get all users
 router.get('/', (req, res) => {
   console.log('======================');
-  Post.findAll({
+  Appointment.findAll({
     attributes: [
       'id',
-      'post_url',
       'title',
-      'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+      'date',
+      'time',
+      'created_at'
     ],
     include: [
       {
-        model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        model: Note,
+        attributes: ['id', 'note_text', 'appointment_id', 'user_id', 'created_at'],
         include: {
           model: User,
           attributes: ['username']
@@ -28,7 +29,7 @@ router.get('/', (req, res) => {
       }
     ]
   })
-    .then(dbPostData => res.json(dbPostData))
+    .then(dbAppointmentData => res.json(dbAppointmentData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -36,21 +37,22 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  Post.findOne({
+  Appointment.findOne({
     where: {
       id: req.params.id
     },
     attributes: [
       'id',
-      'post_url',
       'title',
-      'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+      'date',
+      'time',
+      'created_at'
+      
     ],
     include: [
       {
-        model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        model: Note,
+        attributes: ['id', 'note_text', 'appointment_id', 'user_id', 'created_at'],
         include: {
           model: User,
           attributes: ['username']
@@ -62,12 +64,12 @@ router.get('/:id', (req, res) => {
       }
     ]
   })
-    .then(dbPostData => {
-      if (!dbPostData) {
-        res.status(404).json({ message: 'No post found with this id' });
+    .then(dbAppointmentData => {
+      if (!dbAppointmentData) {
+        res.status(404).json({ message: 'No appointment found with this id' });
         return;
       }
-      res.json(dbPostData);
+      res.json(dbAppointmentData);
     })
     .catch(err => {
       console.log(err);
@@ -76,37 +78,27 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', withAuth, (req, res) => {
-  // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
-  Post.create({
+  // expects {title: 'Albert Rojas', date: '3/23/2020',time: '12:00', user_id: 1}
+  Appointment.create({
     title: req.body.title,
-    post_url: req.body.post_url,
+    date: req.body.date,
+    time: req.body.time,
     user_id: req.session.user_id
   })
-    .then(dbPostData => res.json(dbPostData))
+    .then(dbAppointmentData => res.json(dbAppointmentData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
-router.put('/upvote', withAuth, (req, res) => {
-  //make sure session exists first
-  if (req.session) {
-
-    // custom static method created in models/Post.js
-  Post.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
-    .then(updatedVoteData => res.json(updatedVoteData))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-  }
-});
 
 router.put('/:id', withAuth, (req, res) => {
-  Post.update(
+  Appointment.update(
     {
-      title: req.body.title
+      title: req.body.title,
+      date: req.body.date,
+      time: req.body.time
     },
     {
       where: {
@@ -114,12 +106,12 @@ router.put('/:id', withAuth, (req, res) => {
       }
     }
   )
-    .then(dbPostData => {
-      if (!dbPostData) {
-        res.status(404).json({ message: 'No post found with this id' });
+    .then(dbAppointmentData => {
+      if (!dbAppointmentData) {
+        res.status(404).json({ message: 'No appointment found with this id' });
         return;
       }
-      res.json(dbPostData);
+      res.json(dbAppointmentData);
     })
     .catch(err => {
       console.log(err);
@@ -129,17 +121,17 @@ router.put('/:id', withAuth, (req, res) => {
 
 router.delete('/:id', withAuth, (req, res) => {
   console.log('id', req.params.id);
-  Post.destroy({
+  Appointment.destroy({
     where: {
       id: req.params.id
     }
   })
-    .then(dbPostData => {
-      if (!dbPostData) {
-        res.status(404).json({ message: 'No post found with this id' });
+    .then(dbAppointmentData => {
+      if (!dbAppointmentData) {
+        res.status(404).json({ message: 'No appointment found with this id' });
         return;
       }
-      res.json(dbPostData);
+      res.json(dbAppointmentData);
     })
     .catch(err => {
       console.log(err);
