@@ -25,7 +25,7 @@ Note.init(
     appointment_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'post',
+        model: 'appointment',
         key: 'id'
       }
     }
