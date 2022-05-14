@@ -19,6 +19,11 @@ Appointment.belongsTo(Doctor, {
   onDelete: 'SET NULL'
 });
 
+Doctor.hasMany(Appointment, {
+  foreignKey: 'doctor_id',
+  onDelete: 'SET NULL'
+});
+
 Note.belongsTo(User, {
   foreignKey: 'user_id',
   onDelete: 'SET NULL'
