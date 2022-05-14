@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/jen2ags/Med-Portal#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-session-sequelize": "^7.1.3",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-handlebars": "^6.0.5",
