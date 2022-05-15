@@ -4,7 +4,7 @@ const { Appointment, Note, User, Doctor } = require('../models');
 
 // get all posts for homepage
 router.get('/', (req, res) => {
-  console.log('req.session');
+  console.log('======================');
   Appointment.findAll({
     attributes: [
       'id',
@@ -17,16 +17,28 @@ router.get('/', (req, res) => {
     ],
     include: [
       {
+        model: Note,
+        attributes: ['id', 'note_text', 'appointment_id', 'user_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      },
+      {
         model: User,
         attributes: ['username']
+      },
+      {
+        model: Doctor,
+        attributes: ['doctor_name']
       }
     ]
   })
     .then(dbPostData => {
-      const posts = dbPostData.map(appointment => appointment.get({ plain: true }));
+      const appointments = dbPostData.map(appointment => appointment.get({ plain: true }));
 
       res.render('homepage', {
-        posts,
+        appointments,
         loggedIn: req.session.loggedIn
       });
     })
