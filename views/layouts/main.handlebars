@@ -23,8 +23,8 @@
   </head>
 
   <body>
-    <!-- header / navbar -->
-    <!-- header with navbar including: title & logo, dashboard, appointment, and logout buttons-->
+    <!-- HEADER / NAVBAR -->
+    <!-- header with navbar including: title & logo, dashboard, appointment, and logout references-->
     <header>
       <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
@@ -45,7 +45,7 @@
             <a class="navbar-item" href="/appointment">
               Appointment
             </a>
-            <a class="navbar-item" id="logout" href="">
+            <a class="navbar-item" id="logout" href="/logout">
               Logout
             </a>
           {{else}}
@@ -55,13 +55,79 @@
       </nav>
     </header>
 
+    <!-- HERO -->
     <!-- header upcoming appointments, schedule appointment title links to appointment page -->
     <!-- current date and time populate at top of page-->
+    <section class="hero is-halfheight">
+      <div class="hero-body has-text-centered">
+        <div class="container">
+          <h2 class="title is-1 px-5 py-5">Upcoming Appointments</h2>
+          <a class="subtitle is-4 px-6 py-6" href="/appointment">Schedule
+            Appointment</a>
+        </div>
+      </div>
+    </section>
 
-    <!-- tiles -->
+    <!-- TILES -->
     <!-- notes partials, notes populate on tiles -->
     <!-- appointment partials, populate on tiles-->
     <!-- section for dashboard (portal) with bulma tiles including: including containers for patient name, pcp, notes & cancellation -->
+    <section class="tile is-ancestor has-text-centered mx-3 my-3">
+        <div class="tile is-parent">
+            <article class="tile is-child box">
+                <p class="title" class="patient-one" id="patient">Patient Name</p>
+                <p class="subtitle" class="doctor-one" id="doctor">Doctor Name</p>
+                <button type="submit" class="button my-2 py-2">Add Notes</button>
+                <a class="cancel-appointment" id="delete">Cancel Appointment</a>
+            </article>
+        </div>
+        <div class="tile is-parent">
+            <article class="tile is-child box">
+                <p class="title" class="patient-two" id="patient">Patient Name</p>
+                <p class="subtitle" class="doctor-two" id="doctor">Doctor Name</p>
+                <button type="submit" class="button my-2 py-2">Add Notes</button>
+                <a class="cancel-appointment" id="delete">Cancel Appointment</a>
+            </article>
+        </div>
+        <div class="tile is-parent">
+            <article class="tile is-child box">
+                <p class="title" class="patient-three" id="patient">Patient Name</p>
+                <p class="subtitle" class="doctor-three" id="doctor">Doctor Name</p>
+                <button type="submit" class="button my-2 py-2">Add Notes</button>
+                <a class="cancel-appointment" id="delete">Cancel Appointment</a>
+            </article>
+        </div>
+        <div class="tile is-parent">
+            <article class="tile is-child box">
+                <p class="title" class="patient-four" id="patient">Patient Name</p>
+                <p class="subtitle" class="doctor-four" id="doctor">Doctor Name</p>
+                <button type="submit" class="button my-2 py-2">Add Notes</button>
+                <a class="cancel-appointment" id="delete">Cancel Appointment</a>
+            </article>
+        </div>
+        <div class="tile is-parent">
+            <article class="tile is-child box">
+                <p class="title" class="patient-five" id="patient">Patient Name</p>
+                <p class="subtitle" class="doctor-five" id="doctor">Doctor Name</p>
+                <button type="submit" class="button my-2 py-2">Add Notes</button>
+                <a class="cancel-appointment" id="delete">Cancel Appointment</a>
+            </article>
+        </div>
+        <div class="tile is-parent">
+            <article class="tile is-child box">
+                <p class="title" class="patient-six" id="patient">Patient Name</p>
+                <p class="subtitle" class="doctor-six" id="doctor">Doctor Name</p>
+                <button type="submit" class="button my-2 py-2">Add Notes</button>
+                <a class="cancel-appointment" id="delete">Cancel Appointment</a>
+            </article>
+        </div>
+
+    </section>
+
+
+
+
+
 
     <!-- footer -->
 
