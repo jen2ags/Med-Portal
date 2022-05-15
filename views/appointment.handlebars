@@ -65,3 +65,25 @@
     </div>
   </div>
 </section>
+
+<!-- add in if else appointments -->
+<!-- new tile for edit section -->
+{{#if appointments.length}}
+<h2 class="subtitle has-text-centered is-4">Edit Appointments</h2>
+<section class="tile is-ancestor">
+<div class="tile is-parent">
+    <div class="tile is-child box">
+        <ol>
+            {{#each appointments as |appointment|}}
+            <li>
+                {{> appointment-info appointment}}
+                <a href="/dashboard/edit/{{appointment.id}} class="edit-link">Edit appointment</a>
+            </li>
+            {{/each}}
+        </ol>
+    </div>
+</div>
+</section>
+{{/if}}
+
+<script src="/javascript/add-appointment.js"></script>
