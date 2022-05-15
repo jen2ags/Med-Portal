@@ -1,0 +1,16 @@
+<article class="post">
+  <div class="title">
+    {{title}}
+  </div>
+  <div class="meta">
+    {{date}}
+    {{time}}
+    by
+    {{user.username}}
+    on
+    {{format_date created_at}}
+
+    <a href="/note/{{id}}">{{notes.length}}
+      {{format_plural "note" notes.length}}</a>
+  </div>
+</article>
