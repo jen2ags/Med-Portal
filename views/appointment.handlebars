@@ -5,6 +5,43 @@
 <!-- save button -->
 <!-- section to view added appointments, addtional feature: add comments to saved appointments -->
 
-
-<!-- dropdown component for PCP -->
-
+<!-- center tile in css -->
+<section class="tile is-ancestor">
+  <div class="tile is-parent">
+    <div class="tile is-child box">
+      <form class="field">
+        <!-- patient name -->
+        <label class="label" for="patient-name">Patient name:</label>
+        <input class="input" type="text" id="patient" />
+        <!-- PCP w/ dropdown -->
+        <label class="label" for="pcp-name">PCP:</label>
+        <div class="dropdown is-hoverable">
+          <div class="dropdown-trigger">
+            <button
+              class="button"
+              aria-haspopup="true"
+              aria-controls="dropdown-menu"
+            >
+              <span>Choose PCP</span>
+            </button>
+          </div>
+          <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+              <a class="dropdown-item" id="doctor_name">PCP</a>
+              <hr class="dropdown-divider">
+              <a class="dropdown-item" id="doctor_name">PCP</a>
+              <hr class="dropdown-divider">
+              <a class="dropdown-item" id="doctor_name">PCP</a>
+              <hr class="dropdown-divider">
+              <a class="dropdown-item" id="doctor_name">PCP</a>
+              <hr class="dropdown-divider">
+              <a class="dropdown-item" id="doctor_name">PCP</a>
+              <hr class="dropdown-divider">
+              <a class="dropdown-item" id="doctor_name">PCP</a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
