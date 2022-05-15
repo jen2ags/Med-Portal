@@ -5,10 +5,7 @@
   <div class="meta">
     {{date}}
     {{time}}
-    by
-    {{user.username}}
-    on
-    {{format_date created_at}}
+
 
     <a href="/note/{{id}}">{{notes.length}}
       {{format_plural "note" notes.length}}</a>
@@ -16,9 +13,18 @@
 </article>
 <div class="tile is-parent">
   <article class="tile is-child box">
-    <p class="title" class="patient-one" id="patient">Patient Name</p>
-    <p class="subtitle" class="doctor-one" id="doctor">Doctor Name</p>
-    <button type="submit" class="button my-2 py-2">Add Notes</button>
+    <p class="title" class="patient-one" id="patient">{{title}}</p>
+    <p class="subtitle" class="doctor-one" id="doctor">{{doctor.doctor_name}}</p>
+    <button type="submit" class="button my-2 py-2 is-block">Add Notes</button>
+    <small>    
+      appointment created by
+      {{user.username}}
+      on
+      {{format_date created_at}}
+    </small>
+    <br>
     <a class="cancel-appointment" id="delete">Cancel Appointment</a>
+
+
   </article>
 </div>

@@ -1,8 +1,7 @@
 const router = require('express').Router();
 const withAuth = require('../../utils/auth.js');
-const { Appointment, User, Note } = require('../../models');
+const { Appointment, User, Note, Doctor } = require('../../models');
 
-// get all users
 router.get('/', (req, res) => {
   console.log('======================');
   Appointment.findAll({
@@ -11,7 +10,9 @@ router.get('/', (req, res) => {
       'title',
       'date',
       'time',
-      'created_at'
+      'user_id',
+      'doctor_id',
+      'created_at',
     ],
     include: [
       {
@@ -25,6 +26,10 @@ router.get('/', (req, res) => {
       {
         model: User,
         attributes: ['username']
+      },
+      {
+        model: Doctor,
+        attributes: ['doctor_name']
       }
     ]
   })
@@ -45,8 +50,9 @@ router.get('/:id', (req, res) => {
       'title',
       'date',
       'time',
-      'created_at'
-      
+      'user_id',
+      'doctor_id',
+      'created_at',
     ],
     include: [
       {
@@ -60,6 +66,10 @@ router.get('/:id', (req, res) => {
       {
         model: User,
         attributes: ['username']
+      },
+      {
+        model: Doctor,
+        attributes: ['doctor_name']
       }
     ]
   })
