@@ -3,3 +3,38 @@
 <!-- signup form including username, email, password -->
 <!-- buttons for login and signup submission -->
 <!-- include javascript login script bottom of file -->
+<!-- add left wrapper for img/ right wrapper for login data -->
+<div class="left-wrapper"></div>
+
+<div class="right-wrapper mx-6 my-6 px-6 py-6">
+  <!-- login -->
+  <form class="field">
+    <!-- user -->
+    <label class="label" for="user-login">username:</label>
+    <input class="input" type="text" id="user-login" />
+    <!-- password -->
+    <label class="label" for="password-login">password:</label>
+    <input class="input" type="text" id="password-login" />
+  </form>
+  <div class="field is-grouped">
+    <button type="submit" class="button login-btn">login</button>
+  </div>
+
+  <!-- signup -->
+  <form class="field">
+    <!-- user signup -->
+    <label class="label" for="user-signup">username:</label>
+    <input class="input" type="text" id="user-signup" />
+    <!-- email -->
+    <label class="label" for="email-signup">email:</label>
+    <input class="input" type="text" id="email-signup" />
+    <!-- password -->
+    <label class="label" for="password-signup">password:</label>
+    <input class="input" type="text" id="password-signup" />
+  </form>
+  <div class="field is-grouped">
+    <button type="submit" class="button signup-btn">signup</button>
+  </div>
+</div>
+
+<script src="/javascript/login.js"></script>
