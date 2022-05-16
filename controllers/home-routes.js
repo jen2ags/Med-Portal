@@ -98,7 +98,14 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+router.get('/create', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
 
+  res.render('create');
+});
 
 
 module.exports = router;
