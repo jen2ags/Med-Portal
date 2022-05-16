@@ -41,7 +41,28 @@
                   {{/each}}
               </div>
             </div>
+        
         </div>
+        <a class="button js-modal-trigger" data-target="modal">Add Patient</a>
+          <div id="modal" class="modal">
+            <div class="modal-background"></div>
+
+            <div class="modal-content">
+              <div class="box">
+                <div>
+                  <form class="field" id="signup-form">
+                    <label class="label" for="username-signup">Patient Name:</label>
+                    <input class="input" type="text" id="username-signup" />
+                  <div class="field is-grouped">
+                    <button type="submit" id="signup-button" class="button signup-btn">Create Patient</button>
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <button class="modal-close is-large" aria-label="close"></button>
+          </div>
         
         <!-- PCP w/ dropdown -->
         <div class="box">
@@ -127,3 +148,5 @@
 {{/if}}
 
 <script src="/javascript/add-appointment.js"></script>
+<script src="/javascript/modal.js"></script>
+<script src="/javascript/new-patient.js"></script>
