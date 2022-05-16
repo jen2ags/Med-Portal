@@ -48,7 +48,7 @@ async function loginUser(event) {
     }
   }
   
-  document.querySelector('.login-form').addEventListener('submit', loginUser);
+  document.querySelector('#login-form').addEventListener('submit', loginUser);
   
-  document.querySelector('.signup-form').addEventListener('submit', signupUser);
+  document.querySelector('#signup-form').addEventListener('submit', signupUser);
   
