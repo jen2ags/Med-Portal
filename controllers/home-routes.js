@@ -69,5 +69,10 @@ router.get('/create', (req, res) => {
   res.render('create');
 });
 
+router.get('/new-patient', (req, res) => {
+
+  res.render('new-patient');
+});
+
 
 module.exports = router;
