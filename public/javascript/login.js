@@ -23,6 +23,7 @@ async function loginUser(event) {
   }
   
   async function signupUser(event) {
+    console.log('sign up user');
     event.preventDefault();
   
     const username = document.querySelector('#username-signup').value.trim();
@@ -50,5 +51,5 @@ async function loginUser(event) {
   
   document.querySelector('#login-form').addEventListener('submit', loginUser);
   
-  document.querySelector('#signup-form').addEventListener('submit', signupUser);
+  document.querySelector('#signup-button').addEventListener('click', signupUser);
   
