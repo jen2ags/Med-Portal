@@ -16,7 +16,7 @@ async function newAppointmentHandler(event) {
     });
   
     if (response.ok) {
-      document.location.replace('/dashboard');
+      document.location.replace('/appointment');
     } else {
       alert(response.statusText);
     }

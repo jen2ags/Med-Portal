@@ -8,33 +8,17 @@
 
 <div class="right-wrapper mx-6 my-6 px-6 py-6">
   <!-- login -->
-  <form class="field">
+  <form class="field" id="login-form">
     <!-- user -->
-    <label class="label" for="user-login">username:</label>
-    <input class="input" type="text" id="user-login" />
+    <label class="label" for="email-login">email:</label>
+    <input class="input" type="text" id="email-login" />
     <!-- password -->
     <label class="label" for="password-login">password:</label>
-    <input class="input" type="text" id="password-login" />
-  </form>
+    <input class="input" type="password" id="password-login" />
   <div class="field is-grouped">
-    <button type="submit" class="button login-btn">login</button>
+    <button type="submit" id="login-button" class="button login-btn">login</button>
   </div>
-
-  <!-- signup -->
-  <form class="field">
-    <!-- user signup -->
-    <label class="label" for="user-signup">username:</label>
-    <input class="input" type="text" id="user-signup" />
-    <!-- email -->
-    <label class="label" for="email-signup">email:</label>
-    <input class="input" type="text" id="email-signup" />
-    <!-- password -->
-    <label class="label" for="password-signup">password:</label>
-    <input class="input" type="text" id="password-signup" />
+  <a href="/create">New user? Create an account</a>
   </form>
-  <div class="field is-grouped">
-    <button type="submit" class="button signup-btn">signup</button>
-  </div>
 </div>
-
 <script src="/javascript/login.js"></script>
