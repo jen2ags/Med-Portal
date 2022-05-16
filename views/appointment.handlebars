@@ -93,10 +93,10 @@
 <!-- add in if else appointments -->
 <!-- new tile for edit section -->
 {{#if appointments.length}}
-<h2 class="subtitle has-text-centered is-4">Edit Appointments</h2>
-<section class="tile is-ancestor">
+<h2 class="subtitle has-text-centered">Edit Appointments</h2>
+<section class="tile is-ancestor is-flex-wrap-wrap">
 <div class="tile is-parent">
-    <div class="tile is-child box">
+    <div class="tile is-child box is-4">
         <ol>
             {{#each appointments as |appointment|}}
             <li>
