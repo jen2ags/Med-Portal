@@ -23,7 +23,24 @@
         <!-- patient name -->
         <div class="box">
           <label class="label" for="patient-name">Patient name:</label>
-          <input class="input" type="text" id="patient" />
+          <div class="dropdown is-hoverable">
+            <div class="dropdown-trigger">
+              <button
+                class="button"
+                aria-haspopup="true"
+                aria-controls="dropdown-menu"
+              >
+                <span>Choose Patient</span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+                  {{#each patients as |patient|}}
+                    <a class="dropdown-item">{{patient_name}}</a>
+                    <hr class="dropdown-divider" />
+                  {{/each}}
+              </div>
+            </div>
         </div>
         
         <!-- PCP w/ dropdown -->
@@ -46,7 +63,6 @@
                 <a class="dropdown-item">Elon Musk, FNP</a>
                 <hr class="dropdown-divider" />
                 <a class="dropdown-item">Peter Thiel, FNP</a>
-                
               </div>
             </div>
           </div>
