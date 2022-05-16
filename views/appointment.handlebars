@@ -1,0 +1,90 @@
+<!-- APPOINTMENT HANDLEBARS -->
+<!-- section for appointments -->
+<!-- title: add new appointment -->
+<!-- large bulma ancestor tile including: patient name, pcp name (dropdown), add notes, and datepicker  -->
+<!-- save button -->
+<!-- section to view added appointments, addtional feature: add comments to saved appointments -->
+
+<!-- center tile in css -->
+
+<h1 class="title is-1 has-text-centered mx-6 my-6 px-6 py-6">Appointments</h1>
+<section class="tile is-ancestor mx-6 my-6 px-4 py-4">
+  <div class="tile is-parent is-vertical">
+    <div class="tile is-child box">
+      <form class="field mx-4 my-4 px-3 py-3">
+
+        <!-- patient name -->
+        <div class="box">
+          <label class="label" for="patient-name">Patient name:</label>
+          <input class="input" type="text" id="patient" />
+        </div>
+        <!-- PCP w/ dropdown -->
+        <div class="box">
+          <label class="label" for="pcp-name">PCP:</label>
+          <div class="dropdown is-hoverable">
+            <div class="dropdown-trigger">
+              <button
+                class="button"
+                aria-haspopup="true"
+                aria-controls="dropdown-menu"
+              >
+                <span>Choose PCP</span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+                <a class="dropdown-item" id="doctor_name"></a>
+                <hr class="dropdown-divider" />
+                <a class="dropdown-item" id="doctor_name"></a>
+                <hr class="dropdown-divider" />
+                <a class="dropdown-item" id="doctor_name"></a>
+                <hr class="dropdown-divider" />
+                <a class="dropdown-item" id="doctor_name"></a>
+                <hr class="dropdown-divider" />
+                <a class="dropdown-item" id="doctor_name"></a>
+                <hr class="dropdown-divider" />
+                <a class="dropdown-item" id="doctor_name"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- add notes -->
+        <div class="box">
+          <label class="label" for="notes">Add Notes:</label>
+          <div class="control">
+            <textarea class="textarea" placeholder="Start typing..."></textarea>
+          </div>
+        </div>
+        <!-- insert date picker -->
+
+      </form>
+      <!-- save button -->
+      <div class="field is-grouped">
+        <button type="submit" class="save-btn button">Save</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- add in if else appointments -->
+<!-- new tile for edit section -->
+{{#if appointments.length}}
+<h2 class="subtitle has-text-centered is-4">Edit Appointments</h2>
+<section class="tile is-ancestor">
+<div class="tile is-parent">
+    <div class="tile is-child box">
+        <ol>
+            {{#each appointments as |appointment|}}
+            <li>
+                {{> appointment-info appointment}}
+                <a href="/dashboard/edit/{{appointment.id}} class="edit-link">Edit appointment</a>
+            </li>
+            {{/each}}
+        </ol>
+    </div>
+</div>
+</section>
+{{/if}}
+
+<script src="/javascript/add-appointment.js"></script>
