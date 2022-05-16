@@ -13,7 +13,7 @@ async function signupUser(event) {
       });
   
       if (response.ok) {
-        document.location.replace('/new-patient');
+        document.location.replace('/appointment');
       } else {
         alert(response.statusText);
       }
