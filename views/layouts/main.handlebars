@@ -29,7 +29,7 @@
       <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
 
-          <a class="navbar-item" href="/">
+          <a class="navbar-item">
             <!-- add hermes staff logo -->
             <h1 class="title">
               MedPortal
@@ -39,11 +39,11 @@
         <!-- if else logged in statement -->
         <div class="navbar-end my-3 px-3">
           {{#if loggedIn}}
-            <a class="navbar-item" href="/dashboard">
-              Dashboard
-            </a>
             <a class="navbar-item" href="/appointment">
-              Appointment
+              Add Appointment
+            </a>
+            <a class="navbar-item" href="/">
+              View Appointments
             </a>
             <a class="navbar-item" id="logout">
               Logout
