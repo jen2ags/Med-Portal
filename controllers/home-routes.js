@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Appointment, Note, User, Doctor } = require('../models');
+const { Appointment, Note, User, Doctor, Patient } = require('../models');
 
 router.get('/', (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/homepage');
+    res.redirect('/view-all');
     return;
   }
   res.render('login');
@@ -67,6 +67,11 @@ router.get('/create', (req, res) => {
   }
 
   res.render('create');
+});
+
+router.get('/new-patient', (req, res) => {
+
+  res.render('new-patient');
 });
 
 

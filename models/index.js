@@ -3,6 +3,7 @@ const Appointment = require('./Appointment');
 const User = require('./User');
 const Note = require('./Note');
 const Doctor = require('./Doctor');
+const Patient = require('./Patient');
 
 // create associations
 User.hasMany(Appointment, {
@@ -11,6 +12,16 @@ User.hasMany(Appointment, {
 
 Appointment.belongsTo(User, {
   foreignKey: 'user_id',
+  onDelete: 'SET NULL'
+});
+
+Appointment.belongsTo(Patient, {
+  foreignKey: 'patient_id',
+  onDelete: 'SET NULL'
+});
+
+Patient.hasMany(Appointment, {
+  foreignKey: 'patient_id',
   onDelete: 'SET NULL'
 });
 
@@ -43,4 +54,4 @@ Appointment.hasMany(Note, {
   foreignKey: 'appointment_id'
 });
 
-module.exports = { User, Appointment, Note, Doctor };
+module.exports = { User, Appointment, Note, Doctor, Patient };
