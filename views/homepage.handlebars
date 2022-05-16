@@ -8,11 +8,14 @@
         </div>
       </div>
     </section>
-  
-  div class="tile is-ancestor is-4">
+{{#if loggedIn}}
+  <div class="tile is-ancestor is-4">
   {{#each appointments as |appointment|}}
     
       {{> appointment-info appointment }}
     
   {{/each}}
-</div>
+  </div>
+{{!-- {{else}}
+<a class="navbar-item" href="/login">Login</a> --}}
+{{/if}}
