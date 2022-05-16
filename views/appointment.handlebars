@@ -7,7 +7,14 @@
 
 <!-- center tile in css -->
 
-<h1 class="title is-1 has-text-centered mx-6 my-6 px-6 py-6">Appointments</h1>
+{{!-- Begin Datepicker Scripts --}}
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+{{!-- End Datepicker Scripts --}}
+
+<h1 class="title is-1 has-text-centered mx-6 my-6 px-6 py-6">Add Appointment</h1>
 <section class="tile is-ancestor mx-6 my-6 px-4 py-4">
   <div class="tile is-parent is-vertical">
     <div class="tile is-child box">
@@ -18,6 +25,7 @@
           <label class="label" for="patient-name">Patient name:</label>
           <input class="input" type="text" id="patient" />
         </div>
+        
         <!-- PCP w/ dropdown -->
         <div class="box">
           <label class="label" for="pcp-name">PCP:</label>
@@ -33,21 +41,36 @@
             </div>
             <div class="dropdown-menu" id="dropdown-menu" role="menu">
               <div class="dropdown-content">
-                <a class="dropdown-item" id="doctor_name"></a>
+                <a class="dropdown-item">Jeff Bezos, MD</a>
                 <hr class="dropdown-divider" />
-                <a class="dropdown-item" id="doctor_name"></a>
+                <a class="dropdown-item">Elon Musk, FNP</a>
                 <hr class="dropdown-divider" />
-                <a class="dropdown-item" id="doctor_name"></a>
-                <hr class="dropdown-divider" />
-                <a class="dropdown-item" id="doctor_name"></a>
-                <hr class="dropdown-divider" />
-                <a class="dropdown-item" id="doctor_name"></a>
-                <hr class="dropdown-divider" />
-                <a class="dropdown-item" id="doctor_name"></a>
+                <a class="dropdown-item">Peter Thiel, FNP</a>
+                
               </div>
             </div>
           </div>
         </div>
+        <!-- Pick a date -->
+        <div class="box">
+          <label class="label" for="patient-name">Appointment Date/Time:</label>
+          <input class="input" type="text" name="date" value="5/16 10:00 AM" />
+            <script>
+            $(function() {
+              $('input[name="date"]').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                minYear: 2022,
+                maxYear: parseInt(moment().format('YYYY'),10),
+                timePicker: true,
+                locale: {
+                  format: 'M/DD hh:mm A'
+                }
+              });
+            });
+            </script>
+        </div>
+        
         <!-- add notes -->
         <div class="box">
           <label class="label" for="notes">Add Notes:</label>
@@ -55,7 +78,7 @@
             <textarea class="textarea" placeholder="Start typing..."></textarea>
           </div>
         </div>
-        <!-- insert date picker -->
+        
 
       </form>
       <!-- save button -->
