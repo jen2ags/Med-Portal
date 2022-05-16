@@ -22,4 +22,4 @@ async function newAppointmentHandler(event) {
     }
   }
   
-  document.querySelector('.new-appointment-form').addEventListener('submit', newAppointmentHandler);
+  document.querySelector('#new-appointment-form').addEventListener('submit', newAppointmentHandler);
