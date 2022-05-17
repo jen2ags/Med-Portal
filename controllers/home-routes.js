@@ -93,10 +93,6 @@ router.get('/edit-appointment/:id', withAuth, (req, res) => {
       {
         model: Note,
         attributes: ['id', 'note_text', 'appointment_id', 'created_at'],
-        include: {
-          model: Appointment,
-          attributes: ['date_time'],
-        },
       },
       {
         model: Doctor,
@@ -110,10 +106,10 @@ router.get('/edit-appointment/:id', withAuth, (req, res) => {
   })
     .then((dbPostData) => {
       if (dbPostData) {
-        const post = dbPostData.get({ plain: true });
+        const appointment = dbPostData.get({ plain: true });
 
         res.render('edit-appointment', {
-          post,
+          appointment,
           loggedIn: true,
         });
       } else {
