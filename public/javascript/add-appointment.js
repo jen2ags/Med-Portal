@@ -1,19 +1,20 @@
 async function newAppointmentHandler(event) {
     event.preventDefault();
   
-    const title = document.querySelector('input[name="appointment-title"]').value;
-    const patient_name = document.querySelector('input[name="patient-name"]').value;
-    const doctor_name = document.querySelector('input[name="doctor-name"]').value;
-    const date_time = document.querySelector('input[name="date"]').value;
+
+    const patient_id = document.querySelector('#patient_id').value;
+    const doctor_id = document.querySelector('#doctor_id').value;
+    const date_time = document.querySelector('#date_time').value;
+
   // add const for patient name doctor name date_time
     const response = await fetch(`/api/appointments`, {
       method: 'POST',
       body: JSON.stringify({
-        title,
-        patient_name,
-        doctor_name,
-        date_time
-        
+
+        date_time,
+        patient_id,
+        doctor_id
+
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -27,4 +28,4 @@ async function newAppointmentHandler(event) {
     }
   }
   
-  document.querySelector('#new-appointment-form').addEventListener('submit', newAppointmentHandler);
+  document.querySelector('#saveButton').addEventListener('click', newAppointmentHandler);
