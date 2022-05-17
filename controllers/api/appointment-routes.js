@@ -128,7 +128,7 @@ router.put('/:id', withAuth, (req, res) => {
 router.delete('/:id', withAuth, (req, res) => {
   Appointment.destroy({
     where: {
-      id: req.session.id
+      id: req.params.id
     }
   })
     .then(dbAppointmentData => {
