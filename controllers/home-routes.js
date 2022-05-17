@@ -13,36 +13,29 @@ router.get('/', (req, res) => {
 router.get('/appointment/:id', (req, res) => {
   Appointment.findOne({
     where: {
-      id: req.params.id
+      id: req.params.id,
     },
-    attributes: [
-      'id',
-      'date_time',
-      
-      'patient_id',
-      'doctor_id',
-      'created_at',
-    ],
+    attributes: ['id', 'date_time', 'patient_id', 'doctor_id', 'created_at'],
     include: [
       {
         model: Note,
         attributes: ['id', 'note_text', 'appointment_id', 'created_at'],
         include: {
           model: Appointment,
-          attributes: ['date_time']
-        }
+          attributes: ['date_time'],
+        },
       },
       {
         model: Doctor,
-        attributes: ['doctor_name']
+        attributes: ['doctor_name'],
       },
       {
         model: Patient,
-        attributes: ['patient_name']
-      }
-    ]
+        attributes: ['patient_name'],
+      },
+    ],
   })
-    .then(dbPostData => {
+    .then((dbPostData) => {
       if (!dbPostData) {
         res.status(404).json({ message: 'No appointment found with this id!' });
         return;
@@ -54,10 +47,10 @@ router.get('/appointment/:id', (req, res) => {
       //pass data to template
       res.render('single-appointment', {
         appointment,
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
@@ -82,16 +75,35 @@ router.get('/create', (req, res) => {
 
 router.get('/getuser', (req, res) => {
   if (req.session.loggedIn) {
-   res.status(200).send(req.session.user_id)
+    res.status(200).send(req.session.user_id);
   } else {
-   res.sendStatus(403);
+    res.sendStatus(403);
   }
- })
+});
 
 router.get('/new-patient', (req, res) => {
-
   res.render('new-patient');
 });
 
+router.get('/editNote/:id', withAuth, (req, res) => {
+  Note.findByPk(req.params.id, {
+    attributes: ['id', 'note_text', 'appointment_id', 'created_at'],
+  })
+    .then((dbPostData) => {
+      if (dbPostData) {
+        const note = dbPostData.get({ plain: true });
+
+        res.render('edit-note', {
+          note,
+          loggedIn: true,
+        });
+      } else {
+        res.status(404).end();
+      }
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
 
 module.exports = router;
