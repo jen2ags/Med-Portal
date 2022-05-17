@@ -4,27 +4,32 @@
 <!-- buttons for login and signup submission -->
 <!-- include javascript login script bottom of file -->
 <!-- add left wrapper for img/ right wrapper for login data -->
-<div class="left-wrapper"></div>
+<div class='main-wrap'>
+  <div class='left-wrapper'></div>
 
-<div class="right-wrapper mx-6 my-6 px-6 py-6">
-  <!-- signup -->
-  <form class="field" id="signup-form">
-    <!-- user signup -->
-    <label class="label" for="username-signup">username:</label>
-    <input class="input" type="text" id="username-signup" />
-    <!-- email -->
-    <label class="label" for="email-signup">email:</label>
-    <input class="input" type="text" id="email-signup" />
-    <!-- password -->
-    <label class="label" for="password-signup">password:</label>
-    <input class="input" type="password" id="password-signup" />
-  <div class="field is-grouped">
-    <button type="submit" id="signup-button" class="button signup-btn">signup</button>
+  <div class='right-wrapper mx-6 my-6 px-6 py-6'>
+    <!-- signup -->
+    <form class='field' id='signup-form'>
+      <!-- user signup -->
+      <label class='label' for='username-signup'>username:</label>
+      <input class='input' type='text' id='username-signup' />
+      <!-- email -->
+      <label class='label' for='email-signup'>email:</label>
+      <input class='input' type='text' id='email-signup' />
+      <!-- password -->
+      <label class='label' for='password-signup'>password:</label>
+      <input class='input' type='password' id='password-signup' />
+      <div class='field is-grouped'>
+        <button
+          type='submit'
+          id='signup-button'
+          class='button signup-btn'
+        >signup</button>
+      </div>
+      <a href='login'>Already a user? Login</a>
+    </form>
   </div>
-  <a href="login">Already a user? Login</a>
-  </form>
+
 </div>
 
-
-
-<script src="/javascript/create.js"></script>
+<script src='/javascript/create.js'></script>
