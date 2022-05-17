@@ -23,10 +23,6 @@ router.get('/', (req, res) => {
           }
         },
         {
-          model: User,
-          attributes: ['username']
-        },
-        {
           model: Doctor,
           attributes: ['doctor_name']
         },

@@ -2,23 +2,14 @@ const { Doctor } = require("../models");
 
 const doctordata = [
   {
-    doctor_name: "doctor one"
+    doctor_name: "Jeff Carter, FNP"
   },
   {
-    doctor_name: "doctor two"
+    doctor_name: "Sheila Douglas, MD"
   },
   {
-    doctor_name: "doctor three"
-  },
-  {
-    doctor_name: "doctor four"
-  },
-  {
-    doctor_name: "doctor five"
-  },
-  {
-    doctor_name: "doctor six"
-  },
+    doctor_name: "Karen Gonzalez, FNP"
+  }
 ];
 
 const seedDoctors = () => Doctor.bulkCreate(doctordata);
