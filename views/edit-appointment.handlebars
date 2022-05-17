@@ -1,0 +1,34 @@
+<article>
+  <a href="/dashboard"> &larr; Back to dashboard</a>
+  <h2>
+    Edit Post
+  </h2>
+  <form class="edit-post-form">
+    <div>
+      <input name="post-title" type="text" value="{{appointment.id}}" />
+      
+    </div>
+    <div>
+      |
+      <a href="/appointment/{{appointment.id}}">{{appointment.notes.length}} {{format_plural "note" appointment.notes.length}}</a>
+    </div>
+    <button type="submit">Save post</button>
+    <button type="button" class="delete-post-btn">Delete post</button>
+  </form>
+</article>
+
+<form class="comment-form">
+  <div>
+    <textarea name="comment-body"></textarea>
+  </div>
+
+  <div>
+    <button type="submit">add comment</button>
+  </div>
+</form>
+
+{{> notes appointment.notes}}
+
+<script src="/javascript/edit-appointment.js"></script>
+<script src="/javascript/delete-appointment.js"></script>
+<script src="/javascript/note.js"></script>
