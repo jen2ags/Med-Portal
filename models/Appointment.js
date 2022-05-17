@@ -15,19 +15,22 @@ Appointment.init(
       type: DataTypes.STRING,
       allowNull: false
     },
-    date: {
-      type: DataTypes.DATEONLY,
-      allowNull: false,
-    },
-    time: {
+    date_time: {
 
         type: DataTypes.STRING,
-        allowNulll: false
+        allowNull: false
     },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'user',
+        key: 'id'
+      }
+    },
+    patient_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'patient',
         key: 'id'
       }
     },

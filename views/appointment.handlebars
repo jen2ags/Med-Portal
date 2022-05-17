@@ -7,17 +7,63 @@
 
 <!-- center tile in css -->
 
-<h1 class="title is-1 has-text-centered mx-6 my-6 px-6 py-6">Appointments</h1>
+{{!-- Begin Datepicker Scripts --}}
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+{{!-- End Datepicker Scripts --}}
+
+<h1 class="title is-1 has-text-centered mx-6 my-6 px-6 py-6">Add Appointment</h1>
 <section class="tile is-ancestor mx-6 my-6 px-4 py-4">
   <div class="tile is-parent is-vertical">
     <div class="tile is-child box">
-      <form class="field mx-4 my-4 px-3 py-3">
+      <form class="field mx-4 my-4 px-3 py-3" id="new-appointment-form">
 
         <!-- patient name -->
         <div class="box">
           <label class="label" for="patient-name">Patient name:</label>
-          <input class="input" type="text" id="patient" />
+          <div class="dropdown is-hoverable">
+            <div class="dropdown-trigger">
+              <button
+                class="button"
+                aria-haspopup="true"
+                aria-controls="dropdown-menu"
+              >
+                <span>Choose Patient</span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+                  {{#each patients as |patient|}}
+                    <a class="dropdown-item">{{patient_name}}</a>
+                    <hr class="dropdown-divider" />
+                  {{/each}}
+              </div>
+            </div>
+        
         </div>
+        <a class="button js-modal-trigger" data-target="modal">Add Patient</a>
+          <div id="modal" class="modal">
+            <div class="modal-background"></div>
+
+            <div class="modal-content">
+              <div class="box">
+                <div>
+                  <form class="field" id="signup-form">
+                    <label class="label" for="username-signup">Patient Name:</label>
+                    <input class="input" type="text" id="username-signup" />
+                  <div class="field is-grouped">
+                    <button type="submit" id="signup-button" class="button signup-btn">Create Patient</button>
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <button class="modal-close is-large" aria-label="close"></button>
+          </div>
+        
         <!-- PCP w/ dropdown -->
         <div class="box">
           <label class="label" for="pcp-name">PCP:</label>
@@ -31,23 +77,37 @@
                 <span>Choose PCP</span>
               </button>
             </div>
-            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-menu" id="dropdown-menu doctor-name" role="menu">
               <div class="dropdown-content">
-                <a class="dropdown-item" id="doctor_name"></a>
+                <a class="dropdown-item">Jeff Bezos, MD</a>
                 <hr class="dropdown-divider" />
-                <a class="dropdown-item" id="doctor_name"></a>
+                <a class="dropdown-item">Elon Musk, FNP</a>
                 <hr class="dropdown-divider" />
-                <a class="dropdown-item" id="doctor_name"></a>
-                <hr class="dropdown-divider" />
-                <a class="dropdown-item" id="doctor_name"></a>
-                <hr class="dropdown-divider" />
-                <a class="dropdown-item" id="doctor_name"></a>
-                <hr class="dropdown-divider" />
-                <a class="dropdown-item" id="doctor_name"></a>
+                <a class="dropdown-item">Peter Thiel, FNP</a>
               </div>
             </div>
           </div>
         </div>
+        <!-- Pick a date -->
+        <div class="box">
+          <label class="label" for="patient-name">Appointment Date/Time:</label>
+          <input class="input" type="text" name="date" value="5/16 10:00 AM" />
+            <script>
+            $(function() {
+              $('input[name="date"]').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                minYear: 2022,
+                maxYear: parseInt(moment().format('YYYY'),10),
+                timePicker: true,
+                locale: {
+                  format: 'M/DD hh:mm A'
+                }
+              });
+            });
+            </script>
+        </div>
+        
         <!-- add notes -->
         <div class="box">
           <label class="label" for="notes">Add Notes:</label>
@@ -55,7 +115,7 @@
             <textarea class="textarea" placeholder="Start typing..."></textarea>
           </div>
         </div>
-        <!-- insert date picker -->
+        
 
       </form>
       <!-- save button -->
@@ -70,9 +130,9 @@
 <!-- add in if else appointments -->
 <!-- new tile for edit section -->
 {{#if appointments.length}}
-<h2 class="subtitle has-text-centered is-4">Edit Appointments</h2>
-<section class="tile is-ancestor">
-<div class="tile is-parent">
+<h2 class="subtitle has-text-centered">Edit Appointments</h2>
+<section class="tile is-ancestor is-flex-wrap-wrap">
+<div class="tile is-parent is-4">
     <div class="tile is-child box">
         <ol>
             {{#each appointments as |appointment|}}
@@ -88,3 +148,5 @@
 {{/if}}
 
 <script src="/javascript/add-appointment.js"></script>
+<script src="/javascript/modal.js"></script>
+<script src="/javascript/new-patient.js"></script>
