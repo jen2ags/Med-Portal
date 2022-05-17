@@ -15,13 +15,24 @@
 * express-handlebars
 * express-session
 * Sequelize
+* handlebars
 * MySql
 * node
 
 ## Installation
 To install this application, run the following commands in the terminal:
- * npm init
- * npm install express sequelize mysql2 bcrypt connect-session-sequelize express-handlebars express-session node
+ * npm 
+    * init 
+    * install 
+    * express 
+    * sequelize 
+    * mysql2 
+    * bcrypt 
+    * connect-session-sequelize 
+    * express-handlebars 
+    * express-session 
+    * node
+    * handlebars
  * npm install dotenv -save
     * Be sure to save your database, username, and password in the .env file and then make sure it is added to the .gitignore
 
