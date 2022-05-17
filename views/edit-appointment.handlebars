@@ -3,15 +3,15 @@
   <h2>
     Edit Post
   </h2>
-  <form class="edit-post-form">
+  <form class="edit-appointment">
     <div>
-      <input name="post-title" type="text" value="{{appointment.id}}" />
+      <input type="text" value="{{id}}" id="id" />
+      <input type="text" value="{{date_time}}" id="date_time"/>
+      <input type="text" value="{{doctor_id}}" id="doctor_id"/>
+      <input type="text" value="{{patient_id}}" id="patient_id"/>
       
     </div>
-    <div>
-      |
-      <a href="/appointment/{{appointment.id}}">{{appointment.notes.length}} {{format_plural "note" appointment.notes.length}}</a>
-    </div>
+  
     <button type="submit">Save post</button>
     <button type="button" class="delete-post-btn">Delete post</button>
   </form>
@@ -27,7 +27,7 @@
   </div>
 </form>
 
-{{> notes appointment.notes}}
+{{> id appointment.id}}
 
 <script src="/javascript/edit-appointment.js"></script>
 <script src="/javascript/delete-appointment.js"></script>
