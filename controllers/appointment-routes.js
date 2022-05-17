@@ -23,10 +23,9 @@ router.get('/edit/:id', withAuth, (req, res) => {
     Appointment.findByPk(req.params.id, {
       attributes: [
         'id',
-        'title',
-        'date',
-        'time',
+        'date_time',
         'user_id',
+        'patient_id',
         'doctor_id',
         'created_at',
       ],
@@ -46,6 +45,10 @@ router.get('/edit/:id', withAuth, (req, res) => {
         {
           model: Doctor,
           attributes: ['doctor_name']
+        },
+        {
+          model: Patient,
+          attributes: ['patient_name']
         }
       ]
     })

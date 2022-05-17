@@ -11,12 +11,7 @@ Appointment.init(
       primaryKey: true,
       autoIncrement: true
     },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     date_time: {
-
         type: DataTypes.STRING,
         allowNull: false
     },

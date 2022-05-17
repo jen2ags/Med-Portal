@@ -1,13 +1,13 @@
 async function newAppointmentHandler(event) {
     event.preventDefault();
   
-    const title = document.querySelector('input[name="appointment-title"]').value;
+    const patient_id = document.querySelector('input[name="appointment-patient_id"]').value;
     const post_url = document.querySelector('input[name="appointment-url"]').value;
   
     const response = await fetch(`/api/appointments`, {
       method: 'POST',
       body: JSON.stringify({
-        title,
+        patient_id,
         post_url
       }),
       headers: {

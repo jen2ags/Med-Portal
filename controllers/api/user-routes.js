@@ -22,14 +22,38 @@ router.get('/:id', (req, res) => {
         include: [
             {
                 model: Appointment,
-                attributes: ['id', 'title', 'date', 'time']
+                attributes: ['id', 'date_time', 'user_id', 'patient_id', 'doctor_id'],
+                include: [{
+                    model: Patient,
+                    attributes: ['patient_name']
+                },
+                {
+                    model: User,
+                    attributes: ['username']
+                },
+                {
+                    model: Doctor,
+                    attributes: ['doctor_name']
+                }]
             },
             {
                 model: Note,
                 attributes: ['id', 'note_text', 'created_at'],
                 include: {
                     model: Appointment,
-                    attributes: ['title']
+                    attributes: ['id', 'date_time', 'user_id', 'patient_id', 'doctor_id'],
+                    include: [{
+                        model: Patient,
+                        attributes: ['patient_name']
+                    },
+                    {
+                        model: User,
+                        attributes: ['username']
+                    },
+                    {
+                        model: Doctor,
+                        attributes: ['doctor_name']
+                    }]
                 }
             }
         ]
