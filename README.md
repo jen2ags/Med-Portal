@@ -47,8 +47,11 @@ To install this application:
     * npm start
 
 
-## Website
+## GitHub Repository
+https://github.com/jen2ags/Med-Portal
 
+## Heroku Deployed Application
+https://ancient-ridge-51231.herokuapp.com/
 
 ## Screen Shot
 ![Screenshot]()
