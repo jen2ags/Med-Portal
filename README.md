@@ -58,4 +58,4 @@ https://ancient-ridge-51231.herokuapp.com/
 
 
 ## Contribution
-Made by Jennifer Jennings
+Made by Cheryl Cruz, Colt Schultz, and Jennifer Jennings
