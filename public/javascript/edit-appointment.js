@@ -6,7 +6,7 @@ async function editFormHandler(event) {
   const id = window.location.toString().split('/')[
     window.location.toString().split('/').length - 1
   ];
-  const response = await fetch(`/api/appointment/${id}`, {
+  const response = await fetch(`/api/edit-appointment/${id}`, {
     method: 'PUT',
     body: JSON.stringify({
       appointment_id,

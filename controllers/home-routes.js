@@ -86,16 +86,34 @@ router.get('/new-patient', (req, res) => {
   res.render('new-patient');
 });
 
-router.get('/editNote/:id', withAuth, (req, res) => {
-  Note.findByPk(req.params.id, {
-    attributes: ['id', 'note_text', 'appointment_id', 'created_at'],
+router.get('/edit-appointment/:id', withAuth, (req, res) => {
+  Appointment.findByPk(req.params.id, {
+    attributes: ['id', 'date_time', 'patient_id', 'doctor_id', 'created_at'],
+    include: [
+      {
+        model: Note,
+        attributes: ['id', 'note_text', 'appointment_id', 'created_at'],
+        include: {
+          model: Appointment,
+          attributes: ['date_time'],
+        },
+      },
+      {
+        model: Doctor,
+        attributes: ['doctor_name'],
+      },
+      {
+        model: Patient,
+        attributes: ['patient_name'],
+      },
+    ],
   })
     .then((dbPostData) => {
       if (dbPostData) {
-        const note = dbPostData.get({ plain: true });
+        const post = dbPostData.get({ plain: true });
 
-        res.render('edit-note', {
-          note,
+        res.render('edit-appointment', {
+          post,
           loggedIn: true,
         });
       } else {
