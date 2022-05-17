@@ -31,10 +31,10 @@ router.get('/edit/:id', withAuth, (req, res) => {
       include: [
         {
           model: Note,
-          attributes: ['id', 'note_text', 'appointment_id', 'user_id', 'created_at'],
+          attributes: ['id', 'note_text', 'appointment_id', 'created_at'],
           include: {
-            model: User,
-            attributes: ['username']
+            model: Appointment,
+            attributes: ['date_time']
           }
         },
         {

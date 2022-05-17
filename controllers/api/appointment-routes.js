@@ -16,10 +16,10 @@ router.get('/', (req, res) => {
     include: [
       {
         model: Note,
-        attributes: ['id', 'note_text', 'appointment_id', 'user_id', 'created_at'],
+        attributes: ['id', 'note_text', 'appointment_id', 'created_at'],
         include: {
-          model: User,
-          attributes: ['username']
+          model: Appointment,
+          attributes: ['date_time']
         }
       },
       {
@@ -54,10 +54,10 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: Note,
-        attributes: ['id', 'note_text', 'appointment_id', 'user_id', 'created_at'],
+        attributes: ['id', 'note_text', 'appointment_id', 'created_at'],
         include: {
-          model: User,
-          attributes: ['username']
+          model: Appointment,
+          attributes: ['date_time']
         }
       },
       {
@@ -103,7 +103,6 @@ router.put('/:id', withAuth, (req, res) => {
   Appointment.update(
     {
       date_time: req.body.date_time,
-      user_id: req.session.user_id,
       patient_id: req.body.patient_id,
       doctor_id: req.body.doctor_id
     },

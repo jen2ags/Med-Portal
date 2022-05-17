@@ -17,7 +17,6 @@ router.post('/', withAuth, (req, res) => {
     // expects => {comment_text: "This is the comment", user_id: 1, post_id: 2}
     Note.create({
       note_text: req.body.note_text,
-      user_id: req.session.user_id,
       appointment_id: req.body.appointment_id
     })
       .then(dbNoteData => res.json(dbNoteData))

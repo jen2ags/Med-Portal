@@ -26,10 +26,10 @@ router.get('/appointment/:id', (req, res) => {
     include: [
       {
         model: Note,
-        attributes: ['id', 'note_text', 'appointment_id', 'user_id', 'created_at'],
+        attributes: ['id', 'note_text', 'appointment_id', 'created_at'],
         include: {
-          model: User,
-          attributes: ['username']
+          model: Appointment,
+          attributes: ['date_time']
         }
       },
       {
@@ -79,6 +79,14 @@ router.get('/create', (req, res) => {
 
   res.render('create');
 });
+
+router.get('/getuser', (req, res) => {
+  if (req.session.loggedIn) {
+   res.status(200).send(req.session.user_id)
+  } else {
+   res.sendStatus(403);
+  }
+ })
 
 router.get('/new-patient', (req, res) => {
 
