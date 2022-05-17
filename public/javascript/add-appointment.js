@@ -10,6 +10,9 @@ async function newAppointmentHandler(event) {
       method: 'POST',
       body: JSON.stringify({
         title,
+        patient_name,
+        doctor_name,
+        date_time
         
       }),
       headers: {
