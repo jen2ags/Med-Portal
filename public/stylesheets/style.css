@@ -1,6 +1,28 @@
 /* ROOT */
-
+* {
+  box-sizing: border-box;
+}
 /* FONT STYLES */
+body,
+.title,
+.subtitle {
+  font-family: 'Lora', sans-serif;
+}
+.navbar,
+.main-title,
+.main-sub {
+  font-family: 'Sora', sans-serif;
+}
+
+.column,
+.main-wrap,
+.login-btn,
+.signup-btn,
+.button {
+  font-family: 'Raleway', sans-serif;
+}
+
+/* LOGO */
 
 /* LOGIN */
 
