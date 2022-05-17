@@ -17,17 +17,32 @@ router.get('/appointment/:id', (req, res) => {
     },
     attributes: [
       'id',
-      'title',
-      'date',
-      'time',
+      'date_time',
       'user_id',
+      'patient_id',
       'doctor_id',
       'created_at',
     ],
     include: [
       {
+        model: Note,
+        attributes: ['id', 'note_text', 'appointment_id', 'user_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      },
+      {
         model: User,
         attributes: ['username']
+      },
+      {
+        model: Doctor,
+        attributes: ['doctor_name']
+      },
+      {
+        model: Patient,
+        attributes: ['patient_name']
       }
     ]
   })

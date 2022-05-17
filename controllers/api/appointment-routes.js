@@ -7,10 +7,9 @@ router.get('/', (req, res) => {
   Appointment.findAll({
     attributes: [
       'id',
-      'title',
-      'date',
-      'time',
+      'date_time',
       'user_id',
+      'patient_id',
       'doctor_id',
       'created_at',
     ],
@@ -51,10 +50,9 @@ router.get('/:id', (req, res) => {
     },
     attributes: [
       'id',
-      'title',
-      'date',
-      'time',
+      'date_time',
       'user_id',
+      'patient_id',
       'doctor_id',
       'created_at',
     ],
@@ -74,6 +72,10 @@ router.get('/:id', (req, res) => {
       {
         model: Doctor,
         attributes: ['doctor_name']
+      },
+      {
+        model: Patient,
+        attributes: ['patient_name']
       }
     ]
   })
@@ -93,10 +95,10 @@ router.get('/:id', (req, res) => {
 router.post('/', withAuth, (req, res) => {
   // expects {title: 'Albert Rojas', date: '3/23/2020',time: '12:00', user_id: 1}
   Appointment.create({
-    title: req.body.title,
-    date: req.body.date,
-    time: req.body.time,
-    user_id: req.session.user_id
+    date_time: req.body.date_time,
+    user_id: req.session.user_id,
+    patient_id: req.body.patient_id,
+    doctor_id: req.body.doctor_id
   })
     .then(dbAppointmentData => res.json(dbAppointmentData))
     .catch(err => {
@@ -109,9 +111,10 @@ router.post('/', withAuth, (req, res) => {
 router.put('/:id', withAuth, (req, res) => {
   Appointment.update(
     {
-      title: req.body.title,
-      date: req.body.date,
-      time: req.body.time
+      date_time: req.body.date_time,
+      user_id: req.session.user_id,
+      patient_id: req.body.patient_id,
+      doctor_id: req.body.doctor_id
     },
     {
       where: {
