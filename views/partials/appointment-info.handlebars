@@ -1,6 +1,7 @@
-<div class="tile is-parent is-4">
-  <article class="tile is-child box">
+<div class='tile is-parent is-4'>
+  <article class='tile is-child box'>
     <p
+<<<<<<< HEAD
       class="title"
       class="patient-one is-block"
       id="patient"
@@ -9,6 +10,16 @@
       class="subtitle is-block"
       class="doctor-one"
       id="doctor"
+=======
+      class='title'
+      class='patient-one'
+      id='patient'
+    >{{patient.patient_name}}</p>
+    <p
+      class='subtitle'
+      class='doctor-one'
+      id='doctor'
+>>>>>>> 2df89e6393712ee4922574b5f0a7156259c04d75
     >{{doctor.doctor_name}}</p>
     <p class="is-block">{{date_time}}</p>
 
@@ -47,25 +58,28 @@
       class="button my-2 py-2 is-inline js-modal-trigger"
       data-target="modal{{id}}"
     >Add Notes</button>
-    <div id="modal{{id}}" class="modal">
-      <div class="modal-background"></div>
+    <div id='modal{{id}}' class='modal'>
+      <div class='modal-background'></div>
 
-      <div class="modal-content">
-        <div class="box">
-  <div>
-      <div><h6>Add a note:</h6></div>
-      <div>
-        <form>
+      <div class='modal-content'>
+        <div class='box'>
           <div>
-            <p>Enter your note:</p>
-            <textarea
-              name="note_text"
-              id="note_text"
-            ></textarea>
-            <br>
-            {{!-- Hide this input with css styling please --}}
-            Appointment ID: <input type="text" value={{id}} id="appointment_id" readonly />
-          </div>
+            <div><h6>Add a note:</h6></div>
+            <div>
+              <form>
+                <div>
+                  <p>Enter your note:</p>
+                  <textarea name='note_text' id='note_text'></textarea>
+                  <br />
+                  {{! Hide this input with css styling please }}
+                  Appointment ID:
+                  <input
+                    type='text'
+                    value={{id}}
+                    id='appointment_id'
+                    readonly
+                  />
+                </div>
 
           <div>
             <button
@@ -74,9 +88,6 @@
               id="saveNote"
             >Submit</button>
           </div>
-        </form>
-      </div>
-    </div>
 
         </div>
       </div>
@@ -88,9 +99,13 @@
       {{format_date created_at}}
     </small>
     <br />
-    <a class="cancel-appointment" id="delete">Cancel Appointment</a>
+    <a class='cancel-appointment' id='delete' data-appointment='{{id}}'>Cancel
+      Appointment</a>
+    <br />
+    <a class='edit-appointment' id='edit-appointment'>Edit Appointment</a>
 
   </article>
 </div>
-<script src="/javascript/modal.js"></script>
-<script src="/javascript/add-note.js"></script>
+<script src='/javascript/modal.js'></script>
+<script src='/javascript/add-note.js'></script>
+<script src='/javascript/delete-appointment.js'></script>
