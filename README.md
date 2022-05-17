@@ -20,7 +20,8 @@
 * node
 
 ## Installation
-To install this application, run the following commands in the terminal:
+To install this application: 
+1. Run the following commands in the terminal:
  * npm 
     * init 
     * install 
@@ -33,17 +34,17 @@ To install this application, run the following commands in the terminal:
     * express-session 
     * node
     * handlebars
- * npm install dotenv -save
-    * Be sure to save your database, username, and password in the .env file and then make sure it is added to the .gitignore
+2. Run npm install dotenv -save in the terminal.
+    * Be sure to save your database, username, and password in the .env file and then make sure .env is added to the .gitignore
 
-Then, be sure to go into you mysql shell using:
-* mysql -u root -p
-    * When here, run source db/schema.sql
-    * Then, quit.
+3. Open mysql shell using:
+    * mysql -u root -p
+        * When here, run source db/schema.sql
+        * Then, quit.
 
-In the root of the application run the following commands:
-* node seeds
-* npm start
+4. In the root of the application run the following commands:
+    * node seeds
+    * npm start
 
 
 ## Website
