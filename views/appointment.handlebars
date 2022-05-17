@@ -22,76 +22,50 @@
 
         <!-- patient name -->
         <div class="box">
-          <label class="label" for="patient-name">Patient name:</label>
-          <div class="dropdown is-hoverable">
-            <div class="dropdown-trigger">
-              <button
-                class="button"
-                aria-haspopup="true"
-                aria-controls="dropdown-menu"
-              >
-                <span>Choose Patient</span>
-              </button>
-            </div>
-            <div class="dropdown-menu" id="dropdown-menu" role="menu">
-              <div class="dropdown-content">
-                  {{#each patients as |patient|}}
-                    <a class="dropdown-item">{{patient_name}}</a>
-                    <hr class="dropdown-divider" />
-                  {{/each}}
-              </div>
-            </div>
-        
-        </div>
-        <a class="button js-modal-trigger" data-target="modal">Add Patient</a>
-          <div id="modal" class="modal">
-            <div class="modal-background"></div>
+          <label class="label" for="patient_id">Patient name:</label>
+          <select name="patient_id" id="patient_id">
+            {{#each patients as |patient|}}
+              <option value="{{id}}">{{patient_name}}</option>
+            {{/each}}
+          </select>
+          
+          {{!-- Add Patient --}}
+          <a class="button js-modal-trigger" data-target="modal">Add Patient</a>
+            <div id="modal" class="modal">
+              <div class="modal-background"></div>
 
-            <div class="modal-content">
-              <div class="box">
-                <div>
-                  <form class="field" id="signup-form">
-                    <label class="label" for="username-signup">Patient Name:</label>
-                    <input class="input" type="text" id="username-signup" />
-                  <div class="field is-grouped">
-                    <button type="submit" id="signup-button" class="button signup-btn">Create Patient</button>
+              <div class="modal-content">
+                <div class="box">
+                  <div>
+                    <form class="field" id="signup-form">
+                      <label class="label" for="username-signup">Patient Name:</label>
+                      <input class="input" type="text" id="username-signup" />
+                    <div class="field is-grouped">
+                      <button type="submit" id="signup-button" class="button signup-btn">Create Patient</button>
+                    </div>
+                    </form>
                   </div>
-                  </form>
                 </div>
               </div>
-            </div>
+        </div>
 
             <button class="modal-close is-large" aria-label="close"></button>
           </div>
         
         <!-- PCP w/ dropdown -->
         <div class="box">
-          <label class="label" for="pcp-name">PCP:</label>
-          <div class="dropdown is-hoverable">
-            <div class="dropdown-trigger">
-              <button
-                class="button"
-                aria-haspopup="true"
-                aria-controls="dropdown-menu"
-              >
-                <span>Choose PCP</span>
-              </button>
-            </div>
-            <div class="dropdown-menu" id="dropdown-menu doctor-name" role="menu">
-              <div class="dropdown-content">
-                <a class="dropdown-item">Jeff Bezos, MD</a>
-                <hr class="dropdown-divider" />
-                <a class="dropdown-item">Elon Musk, FNP</a>
-                <hr class="dropdown-divider" />
-                <a class="dropdown-item">Peter Thiel, FNP</a>
-              </div>
-            </div>
-          </div>
+          <label class="label" for="doctor_id">PCP:</label>
+          <select name="doctor_id" id="doctor_id">
+              <option value="1">Jeff Carter, FNP</option>
+              <option value="2">Sheila Douglas, MD</option>
+              <option value="3">Karen Gonzalez, FNP</option>
+          </select>
+
         </div>
         <!-- Pick a date -->
         <div class="box">
           <label class="label" for="patient-name">Appointment Date/Time:</label>
-          <input class="input" type="text" name="date" value="5/16 10:00 AM" />
+          <input class="input" type="text" name="date_time" id="date_time" value="5/16 10:00 AM" />
             <script>
             $(function() {
               $('input[name="date"]').daterangepicker({
@@ -107,21 +81,12 @@
             });
             </script>
         </div>
-        
-        <!-- add notes -->
-        <div class="box">
-          <label class="label" for="notes">Add Notes:</label>
-          <div class="control">
-            <textarea class="textarea" placeholder="Start typing..."></textarea>
-          </div>
-        </div>
-        
-
-      </form>
+      
       <!-- save button -->
       <div class="field is-grouped">
-        <button type="submit" class="save-btn button">Save</button>
+        <button type="submit" class="save-btn button" id="saveButton">Save</button>
       </div>
+      </form>
 
     </div>
   </div>

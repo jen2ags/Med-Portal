@@ -24,7 +24,6 @@ router.get('/edit/:id', withAuth, (req, res) => {
       attributes: [
         'id',
         'date_time',
-        'user_id',
         'patient_id',
         'doctor_id',
         'created_at',
@@ -37,10 +36,6 @@ router.get('/edit/:id', withAuth, (req, res) => {
             model: User,
             attributes: ['username']
           }
-        },
-        {
-          model: User,
-          attributes: ['username']
         },
         {
           model: Doctor,
