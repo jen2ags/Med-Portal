@@ -18,31 +18,39 @@ router.get('/', (req, res) => {
     include: [
       {
         model: Note,
-        attributes: ['id', 'note_text', 'appointment_id', 'user_id', 'created_at'],
+        attributes: [
+          'id',
+          'note_text',
+          'appointment_id',
+          'user_id',
+          'created_at',
+        ],
         include: {
           model: User,
-          attributes: ['username']
-        }
+          attributes: ['username'],
+        },
       },
       {
         model: User,
-        attributes: ['username']
+        attributes: ['username'],
       },
       {
         model: Doctor,
-        attributes: ['doctor_name']
-      }
-    ]
+        attributes: ['doctor_name'],
+      },
+    ],
   })
-    .then(dbPostData => {
-      const appointments = dbPostData.map(appointment => appointment.get({ plain: true }));
+    .then((dbPostData) => {
+      const appointments = dbPostData.map((appointment) =>
+        appointment.get({ plain: true })
+      );
 
       res.render('homepage', {
         appointments,
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
@@ -51,7 +59,7 @@ router.get('/', (req, res) => {
 router.get('/appointment/:id', (req, res) => {
   Appointment.findOne({
     where: {
-      id: req.params.id
+      id: req.params.id,
     },
     attributes: [
       'id',
@@ -65,11 +73,11 @@ router.get('/appointment/:id', (req, res) => {
     include: [
       {
         model: User,
-        attributes: ['username']
-      }
-    ]
+        attributes: ['username'],
+      },
+    ],
   })
-    .then(dbPostData => {
+    .then((dbPostData) => {
       if (!dbPostData) {
         res.status(404).json({ message: 'No appointment found with this id!' });
         return;
@@ -81,10 +89,10 @@ router.get('/appointment/:id', (req, res) => {
       //pass data to template
       res.render('single-appointment', {
         appointment,
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
@@ -98,7 +106,25 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+router.get('/editNote/:id', withAuth, (req, res) => {
+  Note.findByPk(req.params.id, {
+    attributes: ['id', 'note_text', 'appointment_id', 'created_at'],
+  })
+    .then((dbPostData) => {
+      if (dbPostData) {
+        const note = dbPostData.get({ plain: true });
 
-
+        res.render('edit-note', {
+          note,
+          loggedIn: true,
+        });
+      } else {
+        res.status(404).end();
+      }
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
 
 module.exports = router;
