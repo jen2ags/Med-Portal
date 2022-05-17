@@ -10,9 +10,11 @@ async function newAppointmentHandler(event) {
     const response = await fetch(`/api/appointments`, {
       method: 'POST',
       body: JSON.stringify({
+
         date_time,
         patient_id,
         doctor_id
+
       }),
       headers: {
         'Content-Type': 'application/json'
