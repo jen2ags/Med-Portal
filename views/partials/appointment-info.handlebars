@@ -1,7 +1,6 @@
 <div class='tile is-parent is-4'>
   <article class='tile is-child box'>
     <p
-<<<<<<< HEAD
       class="title"
       class="patient-one is-block"
       id="patient"
@@ -10,18 +9,12 @@
       class="subtitle is-block"
       class="doctor-one"
       id="doctor"
-=======
-      class='title'
-      class='patient-one'
-      id='patient'
-    >{{patient.patient_name}}</p>
-    <p
-      class='subtitle'
-      class='doctor-one'
-      id='doctor'
->>>>>>> 2df89e6393712ee4922574b5f0a7156259c04d75
     >{{doctor.doctor_name}}</p>
     <p class="is-block">{{date_time}}</p>
+        <small class="is-block">
+      appointment created on
+      {{format_date created_at}}
+    </small>
 
 
 <button
@@ -58,6 +51,13 @@
       class="button my-2 py-2 is-inline js-modal-trigger"
       data-target="modal{{id}}"
     >Add Notes</button>
+
+      <a class='is-block cancel-appointment' id='delete' data-appointment='{{id}}'>Cancel
+      Appointment</a>
+
+    <a class='is-block edit-appointment' id='edit-appointment'>Edit Appointment</a>
+
+
     <div id='modal{{id}}' class='modal'>
       <div class='modal-background'></div>
 
@@ -91,18 +91,11 @@
 
         </div>
       </div>
+      
     </div>
 
   
-    <small class="is-block">
-      appointment created on
-      {{format_date created_at}}
-    </small>
-    <br />
-    <a class='cancel-appointment' id='delete' data-appointment='{{id}}'>Cancel
-      Appointment</a>
-    <br />
-    <a class='edit-appointment' id='edit-appointment'>Edit Appointment</a>
+
 
   </article>
 </div>

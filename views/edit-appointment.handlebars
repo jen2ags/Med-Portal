@@ -1,5 +1,5 @@
 <article>
-  <a href="/dashboard"> &larr; Back to dashboard</a>
+  <a href="/view-all"> &larr; Back to dashboard</a>
   <h2>
     Edit Post
   </h2>
@@ -12,12 +12,13 @@
       
     </div>
   
-    <button type="submit">Save post</button>
-    <button type="button" class="delete-post-btn">Delete post</button>
+    <button type="submit" id="edit-appointment">Save post</button>
+    <button type="button" class="delete-post-btn" id="delete">Delete post</button>
   </form>
 </article>
 
-<form class="comment-form">
+{{!-- Add Notes Section --}}
+<form class="note-form">
   <div>
     <textarea name="comment-body"></textarea>
   </div>
@@ -27,7 +28,18 @@
   </div>
 </form>
 
-{{> id appointment.id}}
+              <div class="notes">
+                {{#each notes}}
+                <section class="note">
+                  <div class="meta">
+                    {{format_date created_at}}
+                  </div>
+                  <div class="text">
+                    {{note_text}}
+                  </div>
+                </section>
+                {{/each}}
+              </div>
 
 <script src="/javascript/edit-appointment.js"></script>
 <script src="/javascript/delete-appointment.js"></script>
