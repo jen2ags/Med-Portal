@@ -2,15 +2,14 @@ async function handleNote(event) {
     event.preventDefault();
   
     const note_text = document.querySelector('#note_text').value.trim();
-    const appointment_id = document.querySelector('#appointment_id').value;   
-  
+    const appointment_id = document.querySelector('#appointment_id').value;
   
     if (note_text) {
       const response = await fetch('/api/notes', {
         method: 'POST',
         body: JSON.stringify({
           note_text,
-          appointment_id,
+          appointment_id
         }),
         headers: {
           'Content-Type': 'application/json'

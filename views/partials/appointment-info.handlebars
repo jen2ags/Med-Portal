@@ -2,19 +2,49 @@
   <article class="tile is-child box">
     <p
       class="title"
-      class="patient-one"
+      class="patient-one is-block"
       id="patient"
     >{{patient.patient_name}}</p>
     <p
-      class="subtitle"
+      class="subtitle is-block"
       class="doctor-one"
       id="doctor"
     >{{doctor.doctor_name}}</p>
-    {{date_time}}
+    <p class="is-block">{{date_time}}</p>
+
+
+<button
+      type="submit"
+      class="button my-2 py-2 is-inline js-modal-trigger"
+      data-target="notemodal{{id}}"
+    >View Notes</button>
+    <div id="notemodal{{id}}" class="modal">
+      <div class="modal-background"></div>
+
+      <div class="modal-content">
+        <div class="box">
+              <div class="notes">
+              {{#each notes}}
+              <section class="note">
+                <div class="meta">
+                  {{format_date created_at}}
+                </div>
+                <div class="text">
+                  {{note_text}}
+                </div>
+              </section>
+              {{/each}}
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+
 
     <button
       type="submit"
-      class="button my-2 py-2 is-block js-modal-trigger"
+      class="button my-2 py-2 is-inline js-modal-trigger"
       data-target="modal{{id}}"
     >Add Notes</button>
     <div id="modal{{id}}" class="modal">
@@ -40,6 +70,7 @@
           <div>
             <button
               type="submit"
+              data-appointment={{id}}
               id="saveNote"
             >Submit</button>
           </div>
@@ -52,7 +83,7 @@
     </div>
 
   
-    <small>
+    <small class="is-block">
       appointment created on
       {{format_date created_at}}
     </small>

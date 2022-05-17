@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const withAuth = require('../../utils/auth.js');
-const { Appointment, User, Note, Doctor } = require('../../models');
+const { Appointment, User, Note, Doctor, Patient } = require('../../models');
 
 router.get('/', (req, res) => {
   console.log('======================');
@@ -8,7 +8,6 @@ router.get('/', (req, res) => {
     attributes: [
       'id',
       'date_time',
-      
       'patient_id',
       'doctor_id',
       'created_at',
