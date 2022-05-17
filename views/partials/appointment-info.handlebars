@@ -1,22 +1,63 @@
 <div class='tile is-parent is-4'>
   <article class='tile is-child box'>
     <p
-      class='title'
-      class='patient-one'
-      id='patient'
+      class="title"
+      class="patient-one is-block"
+      id="patient"
     >{{patient.patient_name}}</p>
     <p
-      class='subtitle'
-      class='doctor-one'
-      id='doctor'
+      class="subtitle is-block"
+      class="doctor-one"
+      id="doctor"
     >{{doctor.doctor_name}}</p>
-    {{date_time}}
+    <p class="is-block">{{date_time}}</p>
+        <small class="is-block">
+      appointment created on
+      {{format_date created_at}}
+    </small>
+
+
+<button
+      type="submit"
+      class="button my-2 py-2 is-inline js-modal-trigger"
+      data-target="notemodal{{id}}"
+    >View Notes</button>
+    <div id="notemodal{{id}}" class="modal">
+      <div class="modal-background"></div>
+
+      <div class="modal-content">
+        <div class="box">
+              <div class="notes">
+              {{#each notes}}
+              <section class="note">
+                <div class="meta">
+                  {{format_date created_at}}
+                </div>
+                <div class="text">
+                  {{note_text}}
+                </div>
+              </section>
+              {{/each}}
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+
 
     <button
-      type='submit'
-      class='button my-2 py-2 is-block js-modal-trigger'
-      data-target='modal{{id}}'
+      type="submit"
+      class="button my-2 py-2 is-inline js-modal-trigger"
+      data-target="modal{{id}}"
     >Add Notes</button>
+
+      <a class='is-block cancel-appointment' id='delete' data-appointment='{{id}}'>Cancel
+      Appointment</a>
+
+    <a class='is-block edit-appointment' id='edit-appointment'>Edit Appointment</a>
+
+
     <div id='modal{{id}}' class='modal'>
       <div class='modal-background'></div>
 
@@ -40,26 +81,21 @@
                   />
                 </div>
 
-                <div>
-                  <button type='submit' id='saveNote'>Submit</button>
-                </div>
-              </form>
-            </div>
+          <div>
+            <button
+              type="submit"
+              data-appointment={{id}}
+              id="saveNote"
+            >Submit</button>
           </div>
 
         </div>
       </div>
+      
     </div>
 
-    <small>
-      appointment created on
-      {{format_date created_at}}
-    </small>
-    <br />
-    <a class='cancel-appointment' id='delete' data-appointment='{{id}}'>Cancel
-      Appointment</a>
-    <br />
-    <a class='edit-appointment' id='edit-appointment'>Edit Appointment</a>
+  
+
 
   </article>
 </div>
