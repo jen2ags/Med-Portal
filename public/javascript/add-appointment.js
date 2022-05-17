@@ -19,7 +19,7 @@ async function newAppointmentHandler(event) {
   });
 
   if (response.ok) {
-    document.location.replace('/appointment');
+    document.location.replace('/view-all');
   } else {
     alert(response.statusText);
   }
