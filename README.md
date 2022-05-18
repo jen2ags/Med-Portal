@@ -54,7 +54,11 @@ https://github.com/jen2ags/Med-Portal
 https://ancient-ridge-51231.herokuapp.com/
 
 ## Screen Shot
-![Screenshot]()
+Login Screen:
+![Screenshot login screen]()
+
+Appointments Page:
+![Screenshot appointments page]()
 
 
 ## Contribution
