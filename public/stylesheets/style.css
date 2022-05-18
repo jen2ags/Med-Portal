@@ -3,6 +3,7 @@
   --teal: #5da1b4;
   --blue: #1733cc;
   --red: #ef4056;
+  --gray: #f0f6fb;
 }
 
 * {
@@ -54,6 +55,16 @@ body,
   z-index: 9999;
 }
 
+.main-title, .patient-name {
+  color: var(--teal);
+  text-shadow: 
+    0 0 2px var(--blue);
+  
+}
+
+.main-sub {
+  color: var(--red);
+}
 /* LOGIN & SIGNUP */
 .columns {
   background-color: var(--teal);
@@ -107,18 +118,30 @@ body,
 /* NAVBAR */
 .navbar-item {
 color: var(--blue);
+
 }
 
 
 
 /* FOOTER */
-
-/* EDIT APPOINTMENT */
-.button-center {
-    align-items: center;
-justify-content: center;
-position: center;
+.footer {
+  background-color: var(--gray);
 }
+/* VIEW APPOINTMENT */
+.cancel-appointment {
+  color: var(--red);
+}
+
 /* ADD APPOINTMENT */
 
 /* ADD PATIENT */
+.signup-btn {
+  color: var(--blue);
+  background-color: var(--gray);
+}
+
+.signup-btn:hover {
+  background-color: white;
+  color: var(--red);
+
+}
