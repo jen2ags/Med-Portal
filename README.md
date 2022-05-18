@@ -55,11 +55,13 @@ https://ancient-ridge-51231.herokuapp.com/
 
 ## Screen Shot
 Login Screen:
-![Screenshot login screen]()
+![Screenshot login screen](./assets/images/screenshot-images/MedPortal%20Main%20page.png)
 
-Appointments Page:
-![Screenshot appointments page]()
+Appointments Navigation Page:
+![Screenshot appointments page](./assets/images/screenshot-images/Upcoming%20Appointments%20Page.png)
 
+Appointments View:
+![Screenshot appointments view](./assets/images/screenshot-images/Appointments%20View.png)
 
 ## Contribution
 Made by Cheryl Cruz, Colt Schultz, and Jennifer Jennings
