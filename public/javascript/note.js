@@ -1,8 +1,8 @@
 async function noteFormHandler(event) {
   event.preventDefault();
 
-  const note_text = document.querySelector('textarea[name="note-body"]').value.trim();
-  const post_id = window.location.toString().split('/')[
+  const note_text = document.querySelector('#note_text').value.trim();
+  const appointment_id = window.location.toString().split('/')[
     window.location.toString().split('/').length - 1
   ];
 
@@ -10,8 +10,8 @@ async function noteFormHandler(event) {
     const response = await fetch('/api/notes', {
       method: 'POST',
       body: JSON.stringify({
-        post_id,
-        note_text
+        note_text,
+        appointment_id
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -26,4 +26,4 @@ async function noteFormHandler(event) {
   }
 }
 
-document.querySelector('.note-form').addEventListener('submit', noteFormHandler);
+document.querySelector('#saveNote').addEventListener('click', noteFormHandler);
