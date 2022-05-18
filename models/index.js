@@ -6,14 +6,7 @@ const Doctor = require('./Doctor');
 const Patient = require('./Patient');
 
 // create associations
-User.hasMany(Appointment, {
-  foreignKey: 'user_id'
-});
 
-Appointment.belongsTo(User, {
-  foreignKey: 'user_id',
-  onDelete: 'SET NULL'
-});
 
 Appointment.belongsTo(Patient, {
   foreignKey: 'patient_id',
@@ -35,18 +28,8 @@ Doctor.hasMany(Appointment, {
   onDelete: 'SET NULL'
 });
 
-Note.belongsTo(User, {
-  foreignKey: 'user_id',
-  onDelete: 'SET NULL'
-});
-
 Note.belongsTo(Appointment, {
   foreignKey: 'appointment_id',
-  onDelete: 'SET NULL'
-});
-
-User.hasMany(Note, {
-  foreignKey: 'user_id',
   onDelete: 'SET NULL'
 });
 

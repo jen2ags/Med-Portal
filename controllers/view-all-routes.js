@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Appointment, Note, User, Doctor } = require('../models');
+const { Appointment, Note, User, Doctor, Patient } = require('../models');
 
 // get all posts for homepage
 router.get('/', (req, res) => {
@@ -8,28 +8,27 @@ router.get('/', (req, res) => {
     Appointment.findAll({
       attributes: [
         'id',
-        'title',
         'date_time',
-        'user_id',
         'doctor_id',
+        'patient_id',
         'created_at',
       ],
       include: [
         {
           model: Note,
-          attributes: ['id', 'note_text', 'appointment_id', 'user_id', 'created_at'],
+          attributes: ['id', 'note_text', 'appointment_id', 'created_at'],
           include: {
-            model: User,
-            attributes: ['username']
+            model: Appointment,
+            attributes: ['date_time']
           }
-        },
-        {
-          model: User,
-          attributes: ['username']
         },
         {
           model: Doctor,
           attributes: ['doctor_name']
+        },
+        {
+          model: Patient,
+          attributes: ['patient_name']
         }
       ]
     })

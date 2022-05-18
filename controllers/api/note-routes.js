@@ -11,16 +11,13 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/', withAuth, (req, res) => {
-  //check the session
+router.post('/', (req, res) => {
   if (req.session) {
-    // expects => {comment_text: "This is the comment", user_id: 1, post_id: 2}
     Note.create({
       note_text: req.body.note_text,
-      user_id: req.session.user_id,
       appointment_id: req.body.appointment_id
     })
-      .then(dbNoteData => res.json(dbNoteData))
+      .then(noteData => res.json(noteData))
       .catch(err => {
         console.log(err);
         res.status(400).json(err);

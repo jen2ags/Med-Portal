@@ -1,5 +1,4 @@
 <!-- MAIN HANDLEBARS -->
-<!-- head including bulma, fonts, font awesome icons, and css stylesheets -->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -14,23 +13,15 @@
       href="https://fonts.googleapis.com/css2?family=Lora&family=Raleway&family=Sora&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="path/to/font-awesome/css/font-awesome.min.css"
-    />
-
     <link rel="stylesheet" href="stylesheets/style.css" />
   </head>
 
   <body>
     <!-- HEADER / NAVBAR -->
-    <!-- header with navbar including: title & logo, dashboard, appointment, and logout references-->
     <header>
       <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-
-          <a class="navbar-item">
-            <!-- add hermes staff logo -->
+          <a class="navbar-item logo" href="/">
             <h1 class="title">
               MedPortal
             </h1>
@@ -39,20 +30,17 @@
         <!-- if else logged in statement -->
         <div class="navbar-end my-3 px-3">
           {{#if loggedIn}}
-            <a class="navbar-item" href="/appointment">
-              Add Appointment
-            </a>
             <a class="navbar-item" href="/view-all">
               View Appointments
             </a>
-            <a class="navbar-item" href="/new-patient">
-              Add Patient
+            <a class="navbar-item" href="/appointment">
+              Add Appointment
             </a>
             <a class="navbar-item" id="logout">
               Logout
             </a>
             <a class="navbar-item" id="logout">
-              {{ this.user }}
+              {{this.user}}
             </a>
           {{else}}
             <a class="navbar-item" href="/login">Login</a>
@@ -61,17 +49,7 @@
       </nav>
     </header>
 
-    <!-- HERO -->
-    <!-- header upcoming appointments, schedule appointment title links to appointment page -->
-    <!-- current date and time populate at top of page-->
-
-<!-- insert {{body}} in tiles to populate data -->
-    <!-- TILES -->
-    <!-- notes partials, notes populate on tiles -->
-    <!-- appointment partials, populate on tiles-->
-    <!-- section for dashboard (portal) with bulma tiles including: including containers for patient name, pcp, notes & cancellation -->
-    {{{ body }}}
-    
+    {{{body}}}
 
     <!-- footer -->
     <footer class="footer">

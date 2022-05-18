@@ -23,29 +23,27 @@ router.get('/edit/:id', withAuth, (req, res) => {
     Appointment.findByPk(req.params.id, {
       attributes: [
         'id',
-        'title',
-        'date',
-        'time',
-        'user_id',
+        'date_time',
+        'patient_id',
         'doctor_id',
         'created_at',
       ],
       include: [
         {
           model: Note,
-          attributes: ['id', 'note_text', 'appointment_id', 'user_id', 'created_at'],
+          attributes: ['id', 'note_text', 'appointment_id', 'created_at'],
           include: {
-            model: User,
-            attributes: ['username']
+            model: Appointment,
+            attributes: ['date_time']
           }
-        },
-        {
-          model: User,
-          attributes: ['username']
         },
         {
           model: Doctor,
           attributes: ['doctor_name']
+        },
+        {
+          model: Patient,
+          attributes: ['patient_name']
         }
       ]
     })
@@ -62,6 +60,32 @@ router.get('/edit/:id', withAuth, (req, res) => {
         }
       })
       .catch(err => {
+        res.status(500).json(err);
+      });
+  });
+
+  router.put('/:id', withAuth, (req, res) => {
+    Appointment.update(
+      {
+        date_time: req.body.date_time,
+        patient_id: req.body.patient_id,
+        doctor_id: req.body.doctor_id
+      },
+      {
+        where: {
+          id: req.params.id
+        }
+      }
+    )
+      .then(dbAppointmentData => {
+        if (!dbAppointmentData) {
+          res.status(404).json({ message: 'No appointment found with this id' });
+          return;
+        }
+        res.json(dbAppointmentData);
+      })
+      .catch(err => {
+        console.log(err);
         res.status(500).json(err);
       });
   });

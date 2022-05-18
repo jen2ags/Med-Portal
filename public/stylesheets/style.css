@@ -1,5 +1,198 @@
+/* ROOT */
+:root {
+  --teal: #5da1b4;
+  --blue: #1733cc;
+  --red: #ef4056;
+  --gray: #f0f6fb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f0f6fb;
+}
+
+/* FONT STYLES */
+body,
+.title,
+.subtitle {
+  font-family: 'Lora', sans-serif;
+}
+.navbar,
+.main-title,
+.main-sub {
+  font-family: 'Sora', sans-serif;
+}
+
+.column,
+.main-wrap,
+.login-btn,
+.signup-btn,
+.button {
+  font-family: 'Raleway', sans-serif;
+}
+
+/* LOGO */
+
+.logo {
+  background: -webkit-linear-gradient(left, #ef4056, #1733cc);
+  background: -o-linear-gradient(right, #ef4056, #1733cc);
+  background: -moz-linear-gradient(right, #ef4056, #1733cc);
+  background: linear-gradient(to right, #ef4056, #1733cc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* HERO */
+.hero {
+  position: sticky;
+  position: -webkit-sticky;
+  background-image: url('https://wallpaperaccess.com/full/177883.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  z-index: 9999;
+}
+
+.main-title,
+.patient-name {
+  color: var(--teal);
+  text-shadow: 0 0 2px var(--blue);
+}
+
+.main-sub {
+  color: var(--red);
+}
+/* LOGIN & SIGNUP */
+.columns {
+  background-color: var(--teal);
+}
+
 .login-background {
-    background-image: url("https://cdn.discordapp.com/attachments/954088226954547281/975904727223132160/clay-banks-cEzMOp5FtV4-unsplash.jpg");
-    background-size: cover;
-    background-position: center;
+  position: sticky;
+  position: -webkit-sticky;
+  background-image: url('https://cdn.discordapp.com/attachments/954088226954547281/976292085302956062/clay-banks-cEzMOp5FtV4-unsplash-1.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.column {
+  height: 1000px;
+}
+
+.user {
+  padding: 8%;
+  padding-bottom: 7%;
+}
+
+.login-name {
+  color: white;
+  font-weight: bold;
+  text-shadow: 1px 1px black;
+}
+.login-input {
+  border-color: white 10px;
+}
+.login-btn {
+  background-color: var(--teal);
+  color: white;
+  font-weight: 600;
+}
+
+.login-btn:hover {
+  background-color: white;
+  color: var(--teal);
+}
+
+.create {
+  color: white;
+}
+
+.create:hover {
+  color: #1155ccff;
+}
+
+/* NAVBAR */
+.navbar-item {
+  color: var(--blue);
+}
+
+/* FOOTER */
+.footer {
+  background-color: var(--gray);
+}
+/* VIEW APPOINTMENT */
+.cancel-appointment {
+  color: var(--red);
+}
+
+/* ADD PATIENT */
+.signup-btn {
+  color: var(--blue);
+  background-color: var(--gray);
+}
+
+.signup-btn:hover {
+  background-color: white;
+  color: var(--red);
+}
+@media screen and (max-width: 980px) {
+  header,
+  .main-title,
+  .subtitle,
+  .logo {
+    padding-bottom: 0;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+  }
+  header h1 {
+    width: 100%;
+    text-align: center;
+  }
+
+  section {
+    width: 100%;
+  }
+
+  .hero {
+    width: 100%;
+    text-align: center;
+  }
+
+  footer {
+    text-align: center;
+    width: 100%;
+  }
+  .tile,
+  .is-ancestor,
+  .is-parent,
+  .is-child {
+    padding: 10px 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    text-align: center;
+    padding: 5px 30px;
+  }
+  section {
+    padding: 30px 15px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  .tile,
+  .is-parent,
+  .box {
+    padding: 10px 10px;
+    align-items: center;
+    margin: 10%;
+  }
+}
+
+.modal {
+  z-index: 9999;
 }

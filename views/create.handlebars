@@ -1,30 +1,32 @@
-<!-- LOGIN HANDLEBARS -->
-<!-- login form including username, email, password -->
-<!-- signup form including username, email, password -->
-<!-- buttons for login and signup submission -->
-<!-- include javascript login script bottom of file -->
-<!-- add left wrapper for img/ right wrapper for login data -->
-<div class="left-wrapper"></div>
+{{!-- Create Account Page --}}
+<div class='columns is-mobile'>
+  <div class='login-background column is-half'></div>
 
-<div class="right-wrapper mx-6 my-6 px-6 py-6">
-  <!-- signup -->
-  <form class="field" id="signup-form">
-    <!-- user signup -->
-    <label class="label" for="username-signup">username:</label>
-    <input class="input" type="text" id="username-signup" />
-    <!-- email -->
-    <label class="label" for="email-signup">email:</label>
-    <input class="input" type="text" id="email-signup" />
-    <!-- password -->
-    <label class="label" for="password-signup">password:</label>
-    <input class="input" type="password" id="password-signup" />
-  <div class="field is-grouped">
-    <button type="submit" id="signup-button" class="button signup-btn">signup</button>
+  <div class='column user'>
+    <!-- signup -->
+    <form class='field my-6' id='signup-form'>
+      <!-- user signup -->
+      <label class='label login-name my-3' for='username-signup'>username:</label>
+      <input class='input login-input' type='text' id='username-signup' />
+      <!-- email -->
+      <label class='label login-name my-3' for='email-signup'>email:</label>
+      <input class='input login-input' type='text' id='email-signup' />
+      <!-- password -->
+      <label class='label login-name my-3' for='password-signup'>password:</label>
+      <input class='input login-input' type='password' id='password-signup' />
+      <div class='field is-grouped'>
+      {{!-- Submit --}}
+        <button
+          type='submit'
+          id='signup-button'
+          class='button login-btn my-4'
+        >signup</button>
+      </div>
+      {{!-- Login instead link --}}
+      <a href='login' class="create">Already a user? Login</a>
+    </form>
   </div>
-  <a href="login">Already a user? Login</a>
-  </form>
+
 </div>
 
-
-
-<script src="/javascript/create.js"></script>
+<script src='/javascript/create.js'></script>

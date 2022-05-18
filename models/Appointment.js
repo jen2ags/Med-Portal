@@ -11,21 +11,9 @@ Appointment.init(
       primaryKey: true,
       autoIncrement: true
     },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     date_time: {
-
         type: DataTypes.STRING,
         allowNull: false
-    },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id'
-      }
     },
     patient_id: {
       type: DataTypes.INTEGER,

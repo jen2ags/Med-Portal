@@ -1,31 +1,25 @@
 const router = require('express').Router();
 const withAuth = require('../../utils/auth.js');
-const { Appointment, User, Note, Doctor } = require('../../models');
+const { Appointment, User, Note, Doctor, Patient } = require('../../models');
 
 router.get('/', (req, res) => {
   console.log('======================');
   Appointment.findAll({
     attributes: [
       'id',
-      'title',
-      'date',
-      'time',
-      'user_id',
+      'date_time',
+      'patient_id',
       'doctor_id',
       'created_at',
     ],
     include: [
       {
         model: Note,
-        attributes: ['id', 'note_text', 'appointment_id', 'user_id', 'created_at'],
+        attributes: ['id', 'note_text', 'appointment_id', 'created_at'],
         include: {
-          model: User,
-          attributes: ['username']
+          model: Appointment,
+          attributes: ['date_time']
         }
-      },
-      {
-        model: User,
-        attributes: ['username']
       },
       {
         model: Doctor,
@@ -51,29 +45,27 @@ router.get('/:id', (req, res) => {
     },
     attributes: [
       'id',
-      'title',
-      'date',
-      'time',
-      'user_id',
+      'date_time',
+      'patient_id',
       'doctor_id',
       'created_at',
     ],
     include: [
       {
         model: Note,
-        attributes: ['id', 'note_text', 'appointment_id', 'user_id', 'created_at'],
+        attributes: ['id', 'note_text', 'appointment_id', 'created_at'],
         include: {
-          model: User,
-          attributes: ['username']
+          model: Appointment,
+          attributes: ['date_time']
         }
-      },
-      {
-        model: User,
-        attributes: ['username']
       },
       {
         model: Doctor,
         attributes: ['doctor_name']
+      },
+      {
+        model: Patient,
+        attributes: ['patient_name']
       }
     ]
   })
@@ -91,12 +83,10 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', withAuth, (req, res) => {
-  // expects {title: 'Albert Rojas', date: '3/23/2020',time: '12:00', user_id: 1}
   Appointment.create({
-    title: req.body.title,
-    date: req.body.date,
-    time: req.body.time,
-    user_id: req.session.user_id
+    date_time: req.body.date_time,
+    patient_id: req.body.patient_id,
+    doctor_id: req.body.doctor_id
   })
     .then(dbAppointmentData => res.json(dbAppointmentData))
     .catch(err => {
@@ -109,9 +99,8 @@ router.post('/', withAuth, (req, res) => {
 router.put('/:id', withAuth, (req, res) => {
   Appointment.update(
     {
-      title: req.body.title,
-      date: req.body.date,
-      time: req.body.time
+      date_time: req.body.date_time,
+      doctor_id: req.body.doctor_id
     },
     {
       where: {
@@ -133,7 +122,6 @@ router.put('/:id', withAuth, (req, res) => {
 });
 
 router.delete('/:id', withAuth, (req, res) => {
-  console.log('id', req.params.id);
   Appointment.destroy({
     where: {
       id: req.params.id
