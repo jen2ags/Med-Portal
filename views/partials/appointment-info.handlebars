@@ -12,39 +12,38 @@
     >{{doctor.doctor_name}}</p>
     {{date_time}}
 
+    <div id='notemodal{{id}}' class='modal'>
+      <div class='modal-background'></div>
 
-<button
-      type="submit"
-      class="button my-2 py-2 is-block js-modal-trigger"
-      data-target="notemodal{{id}}"
-    >View Notes</button>
-    <div id="notemodal{{id}}" class="modal">
-      <div class="modal-background"></div>
-
-      <div class="modal-content">
-        <div class="box">
-              <div class="notes">
-              {{#each notes}}
-              <section class="note">
-                <div class="meta">
+      <div class='modal-content'>
+        <div class='box'>
+          <div class='notes'>
+            {{#each notes}}
+              <section class='note'>
+                <div class='meta'>
                   {{format_date created_at}}
                 </div>
-                <div class="text">
+                <div class='text'>
                   {{note_text}}
                 </div>
               </section>
-              {{/each}}
-            </div>
+            {{/each}}
+          </div>
         </div>
       </div>
     </div>
-
-
-    <button
-      type='submit'
-      class='button my-2 py-2 is-block js-modal-trigger'
-      data-target='modal{{id}}'
-    >Add Notes</button>
+    <div class='button-center has-text-centered'>
+      <button
+        type='submit'
+        class='button my-2 py-2 is-block js-modal-trigger has-text-centered button-center'
+        data-target='notemodal{{id}}'
+      >View Notes</button>
+      <button
+        type='submit'
+        class='button my-2 py-2 is-block js-modal-trigger has-text-centered button-center'
+        data-target='modal{{id}}'
+      >Add Notes</button>
+    </div>
     <div id='modal{{id}}' class='modal'>
       <div class='modal-background'></div>
 
@@ -56,12 +55,20 @@
               <form>
                 <div>
                   <p>Enter your note:</p>
-                  <textarea name='note_text{{id}}' id='note_text{{id}}'></textarea>
+                  <textarea
+                    name='note_text{{id}}'
+                    id='note_text{{id}}'
+                  ></textarea>
 
                 </div>
 
                 <div>
-                  <button type='submit' id='saveNote{{id}}' data-appointment="{{id}}">Submit</button>
+                  <button
+                    class='button'
+                    type='submit'
+                    id='saveNote{{id}}'
+                    data-appointment='{{id}}'
+                  >Submit</button>
                 </div>
               </form>
             </div>
@@ -76,61 +83,37 @@
       {{format_date created_at}}
     </small>
     <br />
-    <a class='cancel-appointment' id='delete{{id}}' data-appointment='{{id}}'>Cancel
-      Appointment</a>
+    <a
+      class='cancel-appointment'
+      id='delete{{id}}'
+      data-appointment='{{id}}'
+    >Cancel Appointment</a>
     <br />
-    <a class='edit-appointment' id='edit-appointment{{id}}' href="/edit-appointment/{{id}}">Edit Appointment</a>
+    <a
+      class='edit-appointment'
+      id='edit-appointment{{id}}'
+      href='/edit-appointment/{{id}}'
+    >Edit Appointment</a>
 
   </article>
 </div>
 
 <script>
-async function deleteAppointmentHandler(event) {
-  event.preventDefault();
-
-  const link = document.querySelector('#delete{{id}}');
-  const id = link.dataset.appointment;
-
-  const response = await fetch(`/api/appointments/${id}`, {
-    method: 'DELETE'
-  });
-
-  if (response.ok) {
-    document.location.replace('/view-all');
-  } else {
-    alert(response.statusText);
-  }
-}
-
-async function handleNote(event) {
-    event.preventDefault();
-  
-    const note_text = document.querySelector('#note_text{{id}}').value.trim();
-    const link = document.querySelector('#saveNote{{id}}');
-    const appointment_id = link.dataset.appointment;
-  
-    if (note_text) {
-      const response = await fetch('/api/notes', {
-        method: 'POST',
-        body: JSON.stringify({
-          note_text,
-          appointment_id
-        }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-  
-      if (response.ok) {
-        document.location.reload();
-      } else {
-        alert(response.statusText);
-      }
-    }
-  }
-  
-document.querySelector('#saveNote{{id}}').addEventListener('click', handleNote);
-document.querySelector('#delete{{id}}').addEventListener('click', deleteAppointmentHandler);
+  async function deleteAppointmentHandler(event) { event.preventDefault(); const
+  link = document.querySelector('#delete{{id}}'); const id =
+  link.dataset.appointment; const response = await
+  fetch(`/api/appointments/${id}`, { method: 'DELETE' }); if (response.ok) {
+  document.location.replace('/view-all'); } else { alert(response.statusText); }
+  } async function handleNote(event) { event.preventDefault(); const note_text =
+  document.querySelector('#note_text{{id}}').value.trim(); const link =
+  document.querySelector('#saveNote{{id}}'); const appointment_id =
+  link.dataset.appointment; if (note_text) { const response = await
+  fetch('/api/notes', { method: 'POST', body: JSON.stringify({ note_text,
+  appointment_id }), headers: { 'Content-Type': 'application/json' } }); if
+  (response.ok) { document.location.reload(); } else {
+  alert(response.statusText); } } } document.querySelector('#saveNote{{id}}').addEventListener('click',
+  handleNote); document.querySelector('#delete{{id}}').addEventListener('click',
+  deleteAppointmentHandler);
 </script>
 <script src='/javascript/modal.js'></script>
 

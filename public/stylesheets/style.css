@@ -1,10 +1,16 @@
 /* ROOT */
 :root {
   --teal: #5da1b4;
+  --blue: #1733cc;
+  --red: #ef4056;
 }
 
 * {
   box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f6fb;
 }
 
 /* FONT STYLES */
@@ -28,7 +34,15 @@ body,
 }
 
 /* LOGO */
-/* - css horizontal color gradient */
+
+.logo {
+   background: -webkit-linear-gradient(left, #ef4056 , #1733cc);
+   background: -o-linear-gradient(right, #ef4056, #1733cc);
+   background: -moz-linear-gradient(right, #ef4056, #1733cc);
+   background: linear-gradient(to right, #ef4056 , #1733cc); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 /* HERO */
 .hero {
@@ -40,7 +54,7 @@ body,
   z-index: 9999;
 }
 
-/* LOGIN */
+/* LOGIN & SIGNUP */
 .columns {
   background-color: var(--teal);
 }
@@ -88,16 +102,23 @@ body,
 .create:hover {
   color: #1155ccff;
 }
-/* SIGNUP */
+
 
 /* NAVBAR */
+.navbar-item {
+color: var(--blue);
+}
 
-/* TILES */
+
 
 /* FOOTER */
 
 /* EDIT APPOINTMENT */
-
+.button-center {
+    align-items: center;
+justify-content: center;
+position: center;
+}
 /* ADD APPOINTMENT */
 
 /* ADD PATIENT */
