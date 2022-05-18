@@ -1,12 +1,14 @@
+{{!-- Display a list of all individual notes for an appointment --}}
 <div class="notes">
   {{#each this}}
-  <section class="note">
-    <div class="meta">
-      Created on {{format_date created_at}}
-    </div>
-    <div class="text">
-      {{note_text}}
-    </div>
-  </section>
+    <section class="note">
+      <div class="meta">
+        Created on
+        {{format_date created_at}}
+      </div>
+      <div class="text">
+        {{note_text}}
+      </div>
+    </section>
   {{/each}}
 </div>

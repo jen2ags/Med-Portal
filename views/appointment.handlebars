@@ -1,84 +1,108 @@
-{{!-- Begin Datepicker Scripts --}}
-<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-{{!-- End Datepicker Scripts --}}
+{{! Begin Datepicker Scripts }}
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
+></script>
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
+></script>
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+></script>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
+/>
+{{! End Datepicker Scripts }}
 
-<h1 class="title main-title is-1 has-text-centered mx-6 my-6 px-6 py-6">Add Appointment</h1>
+<h1 class="title main-title is-1 has-text-centered mx-6 my-6 px-6 py-6">Add
+  Appointment</h1>
 <section class="tile is-ancestor mx-6 my-6 px-4 py-4">
   <div class="tile is-parent is-vertical">
     <div class="tile is-child box">
       <form class="field mx-4 my-4 px-3 py-3" id="new-appointment-form">
 
         <!-- patient name -->
-        <div class="tile is-child has-text-centered is-mobile ">
-          <label class="label subtitle is-5 has-text-centered" for="patient_id">Patient name:</label>
-          <select name="patient_id" id="patient_id">
+        <div class="tile is-child has-text-centered is-mobile">
+          <label
+            class="label subtitle is-5 has-text-centered"
+            for="patient_id"
+          >Patient name:</label>
+          {{!-- Create a dropdown with all patient names --}}
+          <select class="select" name="patient_id" id="patient_id">
             {{#each patients as |patient|}}
               <option value="{{id}}">{{patient_name}}</option>
             {{/each}}
-          </select><br><br>
+          </select><br /><br />
 
-          {{!-- Add Patient --}}
-          <a class="button js-modal-trigger signup-btn" data-target="modal">Add Patient</a>
-            <div id="modal" class="modal">
-              <div class="modal-background"></div>
+          {{! Add Patient Button/Modal }}
+          <a class="button js-modal-trigger signup-btn" data-target="modal">Add
+            Patient</a>
+          <div id="modal" class="modal">
+            <div class="modal-background"></div>
 
-              <div class="modal-content">
-                <div class="box">
-                  <div>
-                    <form class="field" id="signup-form">
-                      <label class="label" for="username-signup">Patient Name:</label>
-                      <input class="input" type="text" id="username-signup" />
+            <div class="modal-content">
+              <div class="box">
+                <div>
+                  <form class="field" id="signup-form">
+                    <label class="label" for="username-signup">Patient Name:</label>
+                    <input class="input" type="text" id="username-signup" />
                     <div class="field is-grouped">
-                      <button type="submit" id="signup-button" class="button signup-btn">Create Patient</button>
+                      <button
+                        type="submit"
+                        id="signup-button"
+                        class="button signup-btn"
+                      >Create Patient</button>
                     </div>
-                    </form>
-                  </div>
+                  </form>
                 </div>
               </div>
             </div>
+          </div>
         </div>
 
-          
-        
         <!-- PCP w/ dropdown -->
         <div class="tile is-child has-text-centered">
           <label class="label subtitle is-5" for="doctor_id">PCP:</label>
-          <select name="doctor_id" id="doctor_id">
-              <option value="1">Jeff Carter, FNP</option>
-              <option value="2">Sheila Douglas, MD</option>
-              <option value="3">Karen Gonzalez, FNP</option>
+          <select name="doctor_id" id="doctor_id" class="select">
+            <option value="1">Jeff Carter, FNP</option>
+            <option value="2">Sheila Douglas, MD</option>
+            <option value="3">Karen Gonzalez, FNP</option>
           </select>
 
         </div>
-        <br>
+        <br />
 
         <!-- Pick a date -->
-        <div class="box tile is-child has-text-centered">
-          <label class="label subtitle is-5" for="patient-name">Appointment Date/Time:</label>
-          <input class="input has-text-centered" type="text" name="date_time" id="date_time" value="5/16 10:00 AM" />
-            <script>
-            $(function() {
-              $('input[name="date_time"]').daterangepicker({
-                singleDatePicker: true,
-                showDropdowns: true,
-                minYear: 2022,
-                maxYear: parseInt(moment().format('YYYY'),10),
-                timePicker: true,
-                locale: {
-                  format: 'M/DD hh:mm A'
-                }
-              });
-            });
-            </script>
+        <div class="tile is-child has-text-centered">
+          <label class="label subtitle is-5" for="patient-name">Appointment
+            Date/Time:</label>
+          <input
+            class="select has-text-centered"
+            type="text"
+            name="date_time"
+            id="date_time"
+            value="5/19 10:00 AM"
+          />
+          <script>
+            $(function() { $('input[name="date_time"]').daterangepicker({
+            singleDatePicker: true, showDropdowns: true, minYear: 2022, maxYear:
+            parseInt(moment().format('YYYY'),10), timePicker: true, locale: {
+            format: 'M/DD hh:mm A' } }); });
+          </script>
         </div>
-      
-      <!-- save button -->
-      <div class=" has-text-centered my-3 ">
-        <button type="submit" class="save-btn button has-text-centered signup-btn " id="saveButton">Save</button>
-      </div>
+
+        <!-- save button -->
+        <div class="has-text-centered my-3">
+          <button
+            type="submit"
+            class="save-btn button has-text-centered signup-btn"
+            id="saveButton"
+          >Save</button>
+        </div>
       </form>
 
     </div>

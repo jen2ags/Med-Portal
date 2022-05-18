@@ -1,47 +1,49 @@
+{{!-- This file is not in use in the current version --}}
+
 {{! Begin Datepicker Scripts }}
 <script
-  type='text/javascript'
-  src='https://cdn.jsdelivr.net/jquery/latest/jquery.min.js'
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
 ></script>
 <script
-  type='text/javascript'
-  src='https://cdn.jsdelivr.net/momentjs/latest/moment.min.js'
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
 ></script>
 <script
-  type='text/javascript'
-  src='https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js'
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
 ></script>
 <link
-  rel='stylesheet'
-  type='text/css'
-  href='https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css'
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
 />
 {{! End Datepicker Scripts }}
 
 <article>
-  <a class='subtitle is-6 mx-2' href='/view-all'> &larr; Back to dashboard</a>
-  <h2 class='title has-text-centered my-6'>
+  <a class="subtitle is-6 mx-2" href="/view-all"> &larr; Back to dashboard</a>
+  <h2 class="title has-text-centered my-6">
     Edit Appointment
   </h2>
-  <form class='edit-appointment'>
-    <div class='tile is-parent'>
+  <form class="edit-appointment">
+    <div class="tile is-parent">
       {{! Patient }}
-      <div class='tile is-child is-4 box my-6'>
-        <h3 class='title is-4 has-text-centered' for='doctor_id'>Patient:</h3>
+      <div class="tile is-child is-4 box my-6">
+        <h3 class="title is-4 has-text-centered" for="doctor_id">Patient:</h3>
         <h4
-          class='subtitle has-text-centered'
+          class="subtitle has-text-centered"
         >{{appointment.patient.patient_name}}</h4>
       </div>
       <!-- Pick a date -->
-      <div class='box tile is-child is-4 has-text-centered'>
-        <label class='label subtitle is-5' for='patient-name'>Appointment
+      <div class="box tile is-child is-4 has-text-centered">
+        <label class="label subtitle is-5" for="patient-name">Appointment
           Date/Time:</label>
         <input
-          class='input has-text-centered'
-          type='text'
-          name='date_time'
-          id='date_time'
-          value='{{appointment.date_time}}'
+          class="input has-text-centered"
+          type="text"
+          name="date_time"
+          id="date_time"
+          value="{{appointment.date_time}}"
         />
         <script>
           $(function() { $('#date_time').daterangepicker({ singleDatePicker:
@@ -51,60 +53,60 @@
         </script>
       </div>
       <!-- PCP w/ dropdown -->
-      <div class='box tile is-child is-4'>
+      <div class="box tile is-child is-4">
         <label
-          class='label has-text-centered subtitle is-5'
-          for='doctor_id'
+          class="label has-text-centered subtitle is-5"
+          for="doctor_id"
         >PCP:</label>
 
         Current Doctor:
         {{appointment.doctor.doctor_name}}
-        <select class='is-block' name='doctor_id' id='doctor_id'>
-          <option value='1'>Jeff Carter, FNP</option>
-          <option value='2'>Sheila Douglas, MD</option>
-          <option value='3'>Karen Gonzalez, FNP</option>
+        <select class="is-block" name="doctor_id" id="doctor_id">
+          <option value="1">Jeff Carter, FNP</option>
+          <option value="2">Sheila Douglas, MD</option>
+          <option value="3">Karen Gonzalez, FNP</option>
         </select>
       </div>
     </div>
-    <div class='box has-text-centered'>
+    <div class="box has-text-centered">
       <button
-        class='button has-text-centered'
-        type='submit'
-        id='edit-appointment'
+        class="button has-text-centered"
+        type="submit"
+        id="edit-appointment"
         data-appointment={{appointment.id}}
         data-id={{appointment.patient_id}}
       >Save</button>
       <button
-        type='button'
-        class='delete-post-btn button'
-        id='delete'
+        type="button"
+        class="delete-post-btn button"
+        id="delete"
       >Delete</button>
     </div>
   </form>
 </article>
 
 {{! Add Notes Section }}
-<div class='tile is-child has-text-centered'>
-  <h3 class='subtitle is-5'>Add Note</h3>
-  <form class='note-form field'>
+<div class="tile is-child has-text-centered">
+  <h3 class="subtitle is-5">Add Note</h3>
+  <form class="note-form field">
     <div>
-      <textarea id='note_text'></textarea>
+      <textarea id="note_text"></textarea>
     </div>
 
     <div>
-      <button type='submit' id='saveNote' class='button my-3'>Add</button>
+      <button type="submit" id="saveNote" class="button my-3">Add</button>
     </div>
   </form>
 </div>
-<div class='tile is-child has-text-centered my-6'>
-  <h3 class='subtitle is-5 has-text-centered my-4'>Current Notes</h3>
-  <div class='notes'>
+<div class="tile is-child has-text-centered my-6">
+  <h3 class="subtitle is-5 has-text-centered my-4">Current Notes</h3>
+  <div class="notes">
     {{#each appointment.notes}}
-      <section class='note'>
-        <div class='meta'>
+      <section class="note">
+        <div class="meta">
           {{format_date created_at}}
         </div>
-        <div class='text my-3'>
+        <div class="text my-3">
           {{note_text}}
         </div>
       </section>
@@ -112,6 +114,6 @@
   </div>
 </div>
 
-<script src='/javascript/delete-appointment.js'></script>
-<script src='/javascript/note.js'></script>
-<script src='/javascript/edit-appointment.js'></script>
+<script src="/javascript/delete-appointment.js"></script>
+<script src="/javascript/note.js"></script>
+<script src="/javascript/edit-appointment.js"></script>

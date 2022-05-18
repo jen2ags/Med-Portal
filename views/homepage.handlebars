@@ -1,13 +1,15 @@
 
+ {{!-- Header --}}
     <section class="hero is-fullheight">
       <div class="hero-body has-text-centered">
         <div class="container">
-          <h2 class="title is-1   mx-6 my-6 px-5 py-5">Upcoming Appointments</h2>
+          <h2 class="title is-1 mx-6 my-6 px-5 py-5">Upcoming Appointments</h2>
           <a class="subtitle main-sub is-4 mx-6 my-6 px-6 py-6" href="/appointment">Schedule
             Appointment</a>
         </div>
       </div>
     </section>
+{{!-- Print all existing appiontments if logged in --}}
 {{#if loggedIn}}
   <div class="tile is-ancestor  tile-theme is-flex-wrap-wrap">
   {{#each appointments as |appointment|}}
@@ -16,6 +18,4 @@
     
   {{/each}}
   </div>
-{{!-- {{else}}
-<a class="navbar-item" href="/login">Login</a> --}}
 {{/if}}

@@ -1,9 +1,4 @@
-<!-- LOGIN HANDLEBARS -->
-<!-- login form including username, email, password -->
-<!-- signup form including username, email, password -->
-<!-- buttons for login and signup submission -->
-<!-- include javascript login script bottom of file -->
-<!-- add left wrapper for img/ right wrapper for login data -->
+{{!-- Create Account Page --}}
 <div class='columns is-mobile'>
   <div class='login-background column is-half'></div>
 
@@ -20,12 +15,14 @@
       <label class='label login-name my-3' for='password-signup'>password:</label>
       <input class='input login-input' type='password' id='password-signup' />
       <div class='field is-grouped'>
+      {{!-- Submit --}}
         <button
           type='submit'
           id='signup-button'
           class='button login-btn my-4'
         >signup</button>
       </div>
+      {{!-- Login instead link --}}
       <a href='login' class="create">Already a user? Login</a>
     </form>
   </div>
