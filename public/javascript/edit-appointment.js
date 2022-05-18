@@ -1,17 +1,23 @@
+const link = document.querySelector('#edit-appointment');
+const appointment_id = link.dataset.appointment;
+const doctor_id = document.querySelector('#doctor_id').value;
+const date_time = document.querySelector('#date_time').value;
+const patient_id = link.dataset.id;
+
+console.log(patient_id);
+console.log(appointment_id);
+
 async function editFormHandler(event) {
   event.preventDefault();
 
-  const appointment_id = document.querySelector('#appointment_id').value;
-  const note_text = document.querySelector('#note_text').value;
-  const id = window.location.toString().split('/')[
-    window.location.toString().split('/').length - 1
-  ];
-  const response = await fetch(`/api/edit-appointment/${id}`, {
+  console.log('test');
+
+  const response = await fetch(`/api/appointments/${appointment_id}`, {
     method: 'PUT',
     body: JSON.stringify({
-      appointment_id,
-      note_text,
-      id,
+      date_time,
+      patient_id,
+      doctor_id
     }),
     headers: {
       'Content-Type': 'application/json',
