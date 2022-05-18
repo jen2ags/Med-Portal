@@ -11,7 +11,7 @@
 }
 
 body {
-    background-color: #f0f6fb;
+  background-color: #f0f6fb;
 }
 
 /* FONT STYLES */
@@ -37,10 +37,10 @@ body,
 /* LOGO */
 
 .logo {
-   background: -webkit-linear-gradient(left, #ef4056 , #1733cc);
-   background: -o-linear-gradient(right, #ef4056, #1733cc);
-   background: -moz-linear-gradient(right, #ef4056, #1733cc);
-   background: linear-gradient(to right, #ef4056 , #1733cc); 
+  background: -webkit-linear-gradient(left, #ef4056, #1733cc);
+  background: -o-linear-gradient(right, #ef4056, #1733cc);
+  background: -moz-linear-gradient(right, #ef4056, #1733cc);
+  background: linear-gradient(to right, #ef4056, #1733cc);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -55,11 +55,10 @@ body,
   z-index: 9999;
 }
 
-.main-title, .patient-name {
+.main-title,
+.patient-name {
   color: var(--teal);
-  text-shadow: 
-    0 0 2px var(--blue);
-  
+  text-shadow: 0 0 2px var(--blue);
 }
 
 .main-sub {
@@ -114,14 +113,10 @@ body,
   color: #1155ccff;
 }
 
-
 /* NAVBAR */
 .navbar-item {
-color: var(--blue);
-
+  color: var(--blue);
 }
-
-
 
 /* FOOTER */
 .footer {
@@ -132,8 +127,6 @@ color: var(--blue);
   color: var(--red);
 }
 
-/* ADD APPOINTMENT */
-
 /* ADD PATIENT */
 .signup-btn {
   color: var(--blue);
@@ -143,5 +136,59 @@ color: var(--blue);
 .signup-btn:hover {
   background-color: white;
   color: var(--red);
+}
+@media screen and (max-width: 980px) {
+  header,
+  .main-title,
+  .subtitle,
+  .logo {
+    padding-bottom: 0;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+  }
+  header h1 {
+    width: 100%;
+    text-align: center;
+  }
 
+  section {
+    width: 100%;
+  }
+
+  .hero {
+    width: 100%;
+    text-align: center;
+  }
+
+  footer {
+    text-align: center;
+    width: 100%;
+  }
+  .tile,
+  .is-ancestor,
+  .is-parent,
+  .is-child {
+    padding: 10px 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    text-align: center;
+    padding: 5px 30px;
+  }
+  section {
+    padding: 30px 15px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  .tile,
+  .is-parent,
+  .box {
+    padding: 10px 10px;
+    align-items: center;
+    margin: 10%;
+  }
 }
