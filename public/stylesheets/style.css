@@ -23,6 +23,17 @@ body,
 }
 
 /* LOGO */
+/* - css horizontal color gradient */
+
+/* HERO */
+.hero {
+  position: sticky;
+  position: -webkit-sticky;
+  background-image: url('https://wallpaperaccess.com/full/177883.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  z-index: 9999;
+}
 
 /* LOGIN */
 
@@ -35,8 +46,6 @@ body,
 /* SIGNUP */
 
 /* NAVBAR */
-
-/* HERO */
 
 /* TILES */
 
