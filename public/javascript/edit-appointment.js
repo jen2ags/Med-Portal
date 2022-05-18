@@ -10,18 +10,19 @@ console.log(appointment_id);
 async function editFormHandler(event) {
   event.preventDefault();
 
-  console.log('test');
-
-  const response = await fetch(`/api/appointments/${appointment_id}`, {
+  
+  const id = window.location.toString().split('/')[
+    window.location.toString().split('/').length - 1
+  ];
+  const response = await fetch(`/api/appointments/${id}`, {
     method: 'PUT',
     body: JSON.stringify({
       date_time,
-      patient_id,
       doctor_id
     }),
     headers: {
       'Content-Type': 'application/json',
-    },
+    }
   });
 
   if (response.ok) {
@@ -33,4 +34,4 @@ async function editFormHandler(event) {
 
 document
   .querySelector('#edit-appointment')
-  .addEventListener('submit', editFormHandler);
+  .addEventListener('click', editFormHandler);

@@ -20,15 +20,9 @@
 
 <article>
   <a href="/view-all"> &larr; Back to dashboard</a>
-<<<<<<< HEAD
   <h1 class="title">
     Edit Post
   </h1>
-=======
-  <h2>
-    Edit Appointment
-  </h2>
->>>>>>> 58b4d69e2c3f6247500f21a09e81172a2c3f0f49
   <form class="edit-appointment">
     <div>
       {{! Patient }}
@@ -38,7 +32,7 @@
       </div>
       <!-- Pick a date -->
       <div class="box">
-        <label class="label" for="patient-name">Appointment Date/Time:</label>
+        <label class="label" for="date_time">Appointment Date/Time:</label>
         <input
           class="input"
           type="text"
@@ -74,8 +68,8 @@
       id="edit-appointment"
       data-appointment={{appointment.id}}
       data-id={{appointment.patient_id}}
-    >Save post</button>
-    <button type="button" class="delete-post-btn" id="delete">Delete post</button>
+    >Save</button>
+    <button type="button" class="delete-post-btn" id="delete">Delete</button>
   </form>
 </article>
 

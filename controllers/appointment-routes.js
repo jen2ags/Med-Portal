@@ -64,4 +64,30 @@ router.get('/edit/:id', withAuth, (req, res) => {
       });
   });
 
+  router.put('/:id', withAuth, (req, res) => {
+    Appointment.update(
+      {
+        date_time: req.body.date_time,
+        patient_id: req.body.patient_id,
+        doctor_id: req.body.doctor_id
+      },
+      {
+        where: {
+          id: req.params.id
+        }
+      }
+    )
+      .then(dbAppointmentData => {
+        if (!dbAppointmentData) {
+          res.status(404).json({ message: 'No appointment found with this id' });
+          return;
+        }
+        res.json(dbAppointmentData);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
+
 module.exports = router;

@@ -5,7 +5,6 @@ async function newAppointmentHandler(event) {
   const doctor_id = document.querySelector('#doctor_id').value;
   const date_time = document.querySelector('#date_time').value;
 
-  // add const for patient name doctor name date_time
   const response = await fetch(`/api/appointments`, {
     method: 'POST',
     body: JSON.stringify({
