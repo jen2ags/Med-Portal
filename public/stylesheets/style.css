@@ -62,12 +62,12 @@ body,
   padding-bottom: 7%;
 }
 
-.label {
+.login-name {
   color: white;
   font-weight: bold;
   text-shadow: 1px 1px black;
 }
-.input {
+.login-input {
   border-color: white 10px;
 }
 .login-btn {
