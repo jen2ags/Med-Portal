@@ -28,11 +28,11 @@ router.get('/appointment/:id', (req, res) => {
       },
       {
         model: Doctor,
-        attributes: ['doctor_name'],
+        attributes: ['id', 'doctor_name'],
       },
       {
         model: Patient,
-        attributes: ['patient_name'],
+        attributes: ['id', 'patient_name'],
       },
     ],
   })

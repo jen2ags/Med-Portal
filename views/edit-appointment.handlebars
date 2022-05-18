@@ -1,46 +1,110 @@
+{{! Begin Datepicker Scripts }}
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
+></script>
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
+></script>
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+></script>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
+/>
+{{! End Datepicker Scripts }}
+
 <article>
-  {{notes}}
   <a href="/view-all"> &larr; Back to dashboard</a>
+<<<<<<< HEAD
+  <h1 class="title">
+    Edit Post
+  </h1>
+=======
   <h2>
     Edit Appointment
   </h2>
+>>>>>>> 58b4d69e2c3f6247500f21a09e81172a2c3f0f49
   <form class="edit-appointment">
     <div>
-      <input type="text" value="{{id}}" id="id" />
-      <input type="text" value="{{date_time}}" id="date_time"/>
-      <input type="text" value="{{doctor_id}}" id="doctor_id"/>
-      <input type="text" value="{{patient_id}}" id="patient_id"/>
-      
+      {{! Patient }}
+      <div class="box">
+        <label class="label" for="doctor_id">Patient:</label>
+        <h4>{{appointment.patient.patient_name}}</h4>
+      </div>
+      <!-- Pick a date -->
+      <div class="box">
+        <label class="label" for="patient-name">Appointment Date/Time:</label>
+        <input
+          class="input"
+          type="text"
+          name="date_time"
+          id="date_time"
+          value="{{appointment.date_time}}"
+        />
+        <script>
+          $(function() { $('#date_time').daterangepicker({ singleDatePicker:
+          true, showDropdowns: true, minYear: 2022, maxYear:
+          parseInt(moment().format('YYYY'),10), timePicker: true, locale: {
+          format: 'M/DD hh:mm A' } }); });
+        </script>
+      </div>
+      <!-- PCP w/ dropdown -->
+      <div class="box">
+        <label class="label" for="doctor_id">PCP:</label>
+        Current Doctor: {{appointment.doctor.doctor_name}}
+        <select
+        class="is-block"
+          name="doctor_id"
+          id="doctor_id"
+        >
+          <option value="1">Jeff Carter, FNP</option>
+          <option value="2">Sheila Douglas, MD</option>
+          <option value="3">Karen Gonzalez, FNP</option>
+        </select>
+      </div>
     </div>
-  
-    <button type="submit" id="edit-appointment" class="button">Save</button>
-    <button type="button" class="button delete-post-btn" id="delete">Delete</button>
+
+    <button
+      type="submit"
+      id="edit-appointment"
+      data-appointment={{appointment.id}}
+      data-id={{appointment.patient_id}}
+    >Save post</button>
+    <button type="button" class="delete-post-btn" id="delete">Delete post</button>
   </form>
 </article>
 
-{{!-- Add Notes Section --}}
+{{! Add Notes Section }}
+<h3 class="title">Add a note</h3>
 <form class="note-form">
   <div>
-    <textarea name="comment-body"></textarea>
+    <textarea id="note_text"></textarea>
   </div>
 
   <div>
-    <button type="submit" class="button">add note</button>
+    <button type="submit" id="saveNote">add note</button>
   </div>
 </form>
-              <div class="notes">
-                {{#each notes}}
-                <section class="note">
-                  <div class="meta">
-                    {{format_date created_at}}
-                  </div>
-                  <div class="text">
-                    {{note_text}}
-                  </div>
-                </section>
-                {{/each}}
-              </div>
+<h3 class="title">Current Notes</h3>
+<div class="notes">
+  {{#each appointment.notes}}
+    <section class="note">
+      <div class="meta">
+        {{format_date created_at}}
+      </div>
+      <div class="text">
+        {{note_text}}
+      </div>
+    </section>
+  {{/each}}
+</div>
 
-<script src="/javascript/edit-appointment.js"></script>
+
 <script src="/javascript/delete-appointment.js"></script>
 <script src="/javascript/note.js"></script>
+<script src="/javascript/edit-appointment.js"></script>
