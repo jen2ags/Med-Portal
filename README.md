@@ -55,10 +55,10 @@ https://ancient-ridge-51231.herokuapp.com/
 
 ## Screen Shot
 Login Screen:
-![Screenshot login screen](https://github.com/jen2ags/Med-Portal/blob/jenn/assets/images/screenshot-images/MedPortal%20Main%20page.png)
+![Screenshot login screen](./assets/images/screenshot-images/MedPortal%20Main%20page.png)
 
 Appointments Navigation Page:
-![Screenshot appointments page](https://github.com/jen2ags/Med-Portal/blob/jenn/assets/images/screenshot-images/Upcoming%20Appointments%20Page.png)
+![Screenshot appointments page](./assets/images/screenshot-images/Upcoming%20Appointments%20Page.png)
 
 Appointments View:
 ![Screenshot appointments view](./assets/images/screenshot-images/Appointments%20View.png)
