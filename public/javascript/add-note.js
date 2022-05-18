@@ -1,10 +1,12 @@
 async function handleNote(event) {
     event.preventDefault();
-  
+
+    // Get form values  
     const note_text = document.querySelector('#note_text').value.trim();
     const link = document.querySelector('#saveNote');
     const appointment_id = link.dataset.appointment;
   
+    // Fetch
     if (note_text) {
       const response = await fetch('/api/notes', {
         method: 'POST',
@@ -25,5 +27,6 @@ async function handleNote(event) {
     }
   }
   
+  // Save
   document.querySelector('#saveNote').addEventListener('click', handleNote);
   

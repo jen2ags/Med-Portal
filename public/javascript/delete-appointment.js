@@ -1,19 +1,23 @@
 async function deleteAppointmentHandler(event) {
   event.preventDefault();
 
-  const link = document.querySelector('#delete');
+  // Get form values
+  const link = document.querySelector("#delete");
   const id = link.dataset.appointment;
 
+  // Fetch
   const response = await fetch(`/api/appointments/${id}`, {
-    method: 'DELETE'
+    method: "DELETE",
   });
 
   if (response.ok) {
-    document.location.replace('/view-all');
+    document.location.replace("/view-all");
   } else {
     alert(response.statusText);
   }
 }
 
-
-document.querySelector('#delete').addEventListener('click', deleteAppointmentHandler);
+// Delete
+document
+  .querySelector("#delete")
+  .addEventListener("click", deleteAppointmentHandler);

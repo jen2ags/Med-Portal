@@ -1,29 +1,35 @@
-<div class='tile is-parent is-4'>
-  <article class='tile is-child box'>
+{{! Template for appointment cards found on homepage.handlebars }}
+<div class="tile is-parent is-4">
+  <article class="tile is-child box">
+
+    {{! Patient Name }}
     <p
-      class='title'
-      class='patient-one'
-      id='patient'
+      class="title"
+      class="patient-one"
+      id="patient"
     >{{patient.patient_name}}</p>
+
+    {{! Doctor Name }}
     <p
-      class='subtitle'
-      class='doctor-one'
-      id='doctor'
+      class="subtitle"
+      class="doctor-one"
+      id="doctor"
     >{{doctor.doctor_name}}</p>
     {{date_time}}
 
-    <div id='notemodal{{id}}' class='modal'>
-      <div class='modal-background'></div>
+    {{! Notes Modal }}
+    <div id="notemodal{{id}}" class="modal">
+      <div class="modal-background"></div>
 
-      <div class='modal-content'>
-        <div class='box'>
-          <div class='notes'>
+      <div class="modal-content">
+        <div class="box">
+          <div class="notes">
             {{#each notes}}
-              <section class='note'>
-                <div class='meta'>
+              <section class="note">
+                <div class="meta">
                   {{format_date created_at}}
                 </div>
-                <div class='text'>
+                <div class="text">
                   {{note_text}}
                 </div>
               </section>
@@ -32,23 +38,28 @@
         </div>
       </div>
     </div>
-    <div class='button-center has-text-centered'>
+
+    {{! View Notes button }}
+    <div class="button-center has-text-centered">
       <button
-        type='submit'
-        class='button my-2 py-2 is-block js-modal-trigger has-text-centered button-center'
-        data-target='notemodal{{id}}'
+        type="submit"
+        class="button my-2 py-2 is-block js-modal-trigger has-text-centered button-center"
+        data-target="notemodal{{id}}"
       >View Notes</button>
+
+      {{! Add Notes button }}
       <button
-        type='submit'
-        class='button my-2 py-2 is-block js-modal-trigger has-text-centered button-center'
-        data-target='modal{{id}}'
+        type="submit"
+        class="button my-2 py-2 is-block js-modal-trigger has-text-centered button-center"
+        data-target="modal{{id}}"
       >Add Notes</button>
     </div>
-    <div id='modal{{id}}' class='modal'>
-      <div class='modal-background'></div>
 
-      <div class='modal-content'>
-        <div class='box'>
+    {{! Add Note Modal }}
+    <div id="modal{{id}}" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <div class="box">
           <div>
             <div><h6>Add a note:</h6></div>
             <div>
@@ -56,18 +67,20 @@
                 <div>
                   <p>Enter your note:</p>
                   <textarea
-                    name='note_text{{id}}'
-                    id='note_text{{id}}'
+                    name="note_text{{id}}"
+                    id="note_text{{id}}"
                   ></textarea>
 
                 </div>
 
                 <div>
+
+                  {{! Save Note Button }}
                   <button
-                    class='button'
-                    type='submit'
-                    id='saveNote{{id}}'
-                    data-appointment='{{id}}'
+                    class="button"
+                    type="submit"
+                    id="saveNote{{id}}"
+                    data-appointment="{{id}}"
                   >Submit</button>
                 </div>
               </form>
@@ -78,22 +91,25 @@
       </div>
     </div>
 
+    {{! Created On }}
     <small>
       appointment created on
       {{format_date created_at}}
     </small>
     <br />
+
+    {{! Cancel Appointment Button }}
     <a
-      class='cancel-appointment'
-      id='delete{{id}}'
-      data-appointment='{{id}}'
+      class="cancel-appointment"
+      id="delete{{id}}"
+      data-appointment="{{id}}"
     >Cancel Appointment</a>
     <br />
-  
 
   </article>
 </div>
 
+{{! Independent Script for Each Card to Handle Clicks }}
 <script>
   async function deleteAppointmentHandler(event) { event.preventDefault(); const
   link = document.querySelector('#delete{{id}}'); const id =
@@ -111,110 +127,6 @@
   handleNote); document.querySelector('#delete{{id}}').addEventListener('click',
   deleteAppointmentHandler);
 </script>
-<script src='/javascript/modal.js'></script>
 
-{{!-- <div class='tile is-parent is-4'>
-  <article class='tile is-child box'>
-    <p
-      class="title"
-      class="patient-one is-block"
-      id="patient"
-    >{{patient.patient_name}}</p>
-    <p
-      class="subtitle is-block"
-      class="doctor-one"
-      id="doctor"
-    >{{doctor.doctor_name}}</p>
-    <p class="is-block">{{date_time}}</p>
-        <small class="is-block">
-      appointment created on
-      {{format_date created_at}}
-    </small>
-
-
-<button
-      type="submit"
-      class="button my-2 py-2 is-inline js-modal-trigger"
-      data-target="notemodal{{id}}"
-    >View Notes</button>
-    <div id="notemodal{{id}}" class="modal">
-      <div class="modal-background"></div>
-
-      <div class="modal-content">
-        <div class="box">
-              <div class="notes">
-              {{#each notes}}
-              <section class="note">
-                <div class="meta">
-                  {{format_date created_at}}
-                </div>
-                <div class="text">
-                  {{note_text}}
-                </div>
-              </section>
-              {{/each}}
-            </div>
-        </div>
-      </div>
-    </div>
-
-
-
-
-    <button
-      type="submit"
-      class="button my-2 py-2 is-inline js-modal-trigger"
-      data-target="modal{{id}}"
-    >Add Notes</button>
-
-      <a class='is-block cancel-appointment' id='delete' data-appointment='{{id}}'>Cancel
-      Appointment</a>
-
-    <a class='is-block edit-appointment' id='edit-appointment'>Edit Appointment</a>
-
-
-    <div id='modal{{id}}' class='modal'>
-      <div class='modal-background'></div>
-
-      <div class='modal-content'>
-        <div class='box'>
-          <div>
-            <div><h6>Add a note:</h6></div>
-            <div>
-              <form>
-                <div>
-                  <p>Enter your note:</p>
-                  <textarea name='note_text' id='note_text'></textarea>
-                  <br />
-                  {{! Hide this input with css styling please }}
-                  Appointment ID:
-                  <input
-                    type='text'
-                    value={{id}}
-                    id='appointment_id'
-                    readonly
-                  />
-                </div>
-
-          <div>
-            <button
-              type="submit"
-              class="button"
-              data-appointment={{id}}
-              id="saveNote"
-            >Submit</button>
-          </div>
-
-        </div>
-      </div>
-      
-    </div>
-
-  
-
-
-  </article>
-</div>
-<script src='/javascript/modal.js'></script>
-<script src='/javascript/add-note.js'></script>
-<script src='/javascript/delete-appointment.js'></script> --}}
+{{! Bulma Modal Script }}
+<script src="/javascript/modal.js"></script>

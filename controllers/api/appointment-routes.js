@@ -83,10 +83,8 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', withAuth, (req, res) => {
-  // expects {title: 'Albert Rojas', date: '3/23/2020',time: '12:00', user_id: 1}
   Appointment.create({
     date_time: req.body.date_time,
-    user_id: req.session.user_id,
     patient_id: req.body.patient_id,
     doctor_id: req.body.doctor_id
   })
@@ -102,7 +100,6 @@ router.put('/:id', withAuth, (req, res) => {
   Appointment.update(
     {
       date_time: req.body.date_time,
-      patient_id: req.body.patient_id,
       doctor_id: req.body.doctor_id
     },
     {
