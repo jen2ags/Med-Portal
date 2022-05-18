@@ -1,7 +1,7 @@
 # Med-Portal
 
 ## Purpose
-
+As a medical assistant at a doctor's office. I want a web application to complete patient scheduling and medical notes. So that operational needs in the office run more efficiently. The user will be able to
 
 ## Built With
 * HTML
