@@ -19,7 +19,8 @@
               <option value="{{id}}">{{patient_name}}</option>
             {{/each}}
           </select><br><br>
-                    {{!-- Add Patient --}}
+
+          {{!-- Add Patient --}}
           <a class="button js-modal-trigger signup-btn" data-target="modal">Add Patient</a>
             <div id="modal" class="modal">
               <div class="modal-background"></div>
@@ -53,6 +54,7 @@
 
         </div>
         <br>
+
         <!-- Pick a date -->
         <div class="box tile is-child has-text-centered">
           <label class="label subtitle is-5" for="patient-name">Appointment Date/Time:</label>
@@ -82,24 +84,6 @@
     </div>
   </div>
 </section>
-
-{{#if appointments.length}}
-<h2 class="subtitle has-text-centered">Edit Appointments</h2>
-<section class="tile is-ancestor is-flex-wrap-wrap">
-<div class="tile is-parent is-4">
-    <div class="tile is-child box">
-        <ol>
-            {{#each appointments as |appointment|}}
-            <li>
-                {{> appointment-info appointment}}
-                <a href="/dashboard/edit/{{appointment.id}} class="edit-link">Edit appointment</a>
-            </li>
-            {{/each}}
-        </ol>
-    </div>
-</div>
-</section>
-{{/if}}
 
 <script src="/javascript/add-appointment.js"></script>
 <script src="/javascript/modal.js"></script>
