@@ -21,8 +21,8 @@
       <form class="field mx-4 my-4 px-3 py-3" id="new-appointment-form">
 
         <!-- patient name -->
-        <div class="box">
-          <label class="label" for="patient_id">Patient name:</label>
+        <div class="tile is-child has-text-centered is-mobile ">
+          <label class="label subtitle is-5 has-text-centered" for="patient_id">Patient name:</label>
           <select name="patient_id" id="patient_id">
             {{#each patients as |patient|}}
               <option value="{{id}}">{{patient_name}}</option>
@@ -30,7 +30,7 @@
           </select>
           
           {{!-- Add Patient --}}
-          <a class="button js-modal-trigger" data-target="modal">Add Patient</a>
+          <a class="button js-modal-trigger signup-btn" data-target="modal">Add Patient</a>
             <div id="modal" class="modal">
               <div class="modal-background"></div>
 
@@ -49,12 +49,12 @@
               </div>
             </div>
 
-            <button class="modal-close is-large" aria-label="close"></button>
+            <button class="modal-close is-large " aria-label="close"></button>
           </div>
         
         <!-- PCP w/ dropdown -->
-        <div class="box">
-          <label class="label" for="doctor_id">PCP:</label>
+        <div class="tile is-child has-text-centered">
+          <label class="label subtitle is-5" for="doctor_id">PCP:</label>
           <select name="doctor_id" id="doctor_id">
               <option value="1">Jeff Carter, FNP</option>
               <option value="2">Sheila Douglas, MD</option>
@@ -63,9 +63,9 @@
 
         </div>
         <!-- Pick a date -->
-        <div class="box">
-          <label class="label" for="patient-name">Appointment Date/Time:</label>
-          <input class="input" type="text" name="date_time" id="date_time" value="5/16 10:00 AM" />
+        <div class="box tile is-child has-text-centered">
+          <label class="label subtitle is-5" for="patient-name">Appointment Date/Time:</label>
+          <input class="input has-text-centered" type="text" name="date_time" id="date_time" value="5/16 10:00 AM" />
             <script>
             $(function() {
               $('input[name="date_time"]').daterangepicker({
@@ -83,8 +83,8 @@
         </div>
       
       <!-- save button -->
-      <div class="field is-grouped">
-        <button type="submit" class="save-btn button" id="saveButton">Save</button>
+      <div class=" has-text-centered my-3 ">
+        <button type="submit" class="save-btn button has-text-centered signup-btn " id="saveButton">Save</button>
       </div>
       </form>
 
