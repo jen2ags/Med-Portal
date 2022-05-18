@@ -1,7 +1,7 @@
 # Med-Portal
 
 ## Purpose
-As a medical assistant at a doctor's office. I want a web application to complete patient scheduling and medical notes. So that operational needs in the office run more efficiently. The user will be able to
+As a medical assistant at a doctor's office. I want a web application to complete patient scheduling and medical notes. So that operational needs in the office run more efficiently. The user will be able to create a login for MedPortal as well as login using their created credentials. Once the user has logged in, they will be able to view all of their upcoming appointments. Using the navigation bar, the user has options to View Appointments, Add Appointments, Add a Patient, or Logout. The user must be logged in to see these items. If the user selects View Appointments, they will see all of the appointments. If the user selects Add Patient, they will be taken to another screen where they will input the patient name and submit. If they select the Add Appointment, they will be prompted to enter the  information for the patient and save. The new patient will populate on the View Appointments screen. On the appointment screen, inside the appointment cards, the user can add a new note to an appointment or cancel the appointment.
 
 ## Built With
 * HTML
