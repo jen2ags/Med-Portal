@@ -2,6 +2,7 @@
 * {
   box-sizing: border-box;
 }
+
 /* FONT STYLES */
 body,
 .title,
@@ -38,9 +39,22 @@ body,
 /* LOGIN */
 
 .login-background {
-  background-image: url('https://cdn.discordapp.com/attachments/954088226954547281/975904727223132160/clay-banks-cEzMOp5FtV4-unsplash.jpg');
+    position: sticky;
+    position: -webkit-sticky;
+  background-image: url('https://cdn.discordapp.com/attachments/954088226954547281/976292085302956062/clay-banks-cEzMOp5FtV4-unsplash-1.jpg');
   background-size: cover;
   background-position: center;
+
+}
+
+.column {
+  height: 1000px;
+}
+
+.user {
+padding: 8%;
+padding-bottom: 7%;
+
 }
 
 /* SIGNUP */
