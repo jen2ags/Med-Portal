@@ -1,4 +1,8 @@
 /* ROOT */
+:root {
+  --teal: #5da1b4;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -37,14 +41,16 @@ body,
 }
 
 /* LOGIN */
+.columns {
+  background-color: var(--teal);
+}
 
 .login-background {
-    position: sticky;
-    position: -webkit-sticky;
+  position: sticky;
+  position: -webkit-sticky;
   background-image: url('https://cdn.discordapp.com/attachments/954088226954547281/976292085302956062/clay-banks-cEzMOp5FtV4-unsplash-1.jpg');
   background-size: cover;
   background-position: center;
-
 }
 
 .column {
@@ -52,11 +58,36 @@ body,
 }
 
 .user {
-padding: 8%;
-padding-bottom: 7%;
-
+  padding: 8%;
+  padding-bottom: 7%;
 }
 
+.label {
+  color: white;
+  font-weight: bold;
+  text-shadow: 1px 1px black;
+}
+.input {
+  border-color: white 10px;
+}
+.login-btn {
+  background-color: var(--teal);
+  color: white;
+  font-weight: 600;
+}
+
+.login-btn:hover {
+  background-color: white;
+  color: var(--teal);
+}
+
+.create {
+  color: white;
+}
+
+.create:hover {
+  color: #1155ccff;
+}
 /* SIGNUP */
 
 /* NAVBAR */
