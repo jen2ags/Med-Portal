@@ -1,12 +1,3 @@
-<!-- APPOINTMENT HANDLEBARS -->
-<!-- section for appointments -->
-<!-- title: add new appointment -->
-<!-- large bulma ancestor tile including: patient name, pcp name (dropdown), add notes, and datepicker  -->
-<!-- save button -->
-<!-- section to view added appointments, addtional feature: add comments to saved appointments -->
-
-<!-- center tile in css -->
-
 {{!-- Begin Datepicker Scripts --}}
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -27,9 +18,8 @@
             {{#each patients as |patient|}}
               <option value="{{id}}">{{patient_name}}</option>
             {{/each}}
-          </select>
-          
-          {{!-- Add Patient --}}
+          </select><br><br>
+                    {{!-- Add Patient --}}
           <a class="button js-modal-trigger signup-btn" data-target="modal">Add Patient</a>
             <div id="modal" class="modal">
               <div class="modal-background"></div>
@@ -48,9 +38,9 @@
                 </div>
               </div>
             </div>
+        </div>
 
-            <button class="modal-close is-large " aria-label="close"></button>
-          </div>
+          
         
         <!-- PCP w/ dropdown -->
         <div class="tile is-child has-text-centered">
@@ -62,6 +52,7 @@
           </select>
 
         </div>
+        <br>
         <!-- Pick a date -->
         <div class="box tile is-child has-text-centered">
           <label class="label subtitle is-5" for="patient-name">Appointment Date/Time:</label>
