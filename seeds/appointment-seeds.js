@@ -31,21 +31,6 @@ const appointmentdata = [
     patient_id: 6,
     doctor_id: 3,
   },
-  {
-    date_time: "5/16 11:00 AM",
-    patient_id: 7,
-    doctor_id: 1,
-  },
-  {
-    date_time: "5/20 12:00 PM",
-    patient_id: 8,
-    doctor_id: 2,
-  },
-  {
-    date_time: "5/21 1:00 PM",
-    patient_id: 9,
-    doctor_id: 3,
-  },
 ];
 
 const seedAppointment = () => Appointment.bulkCreate(appointmentdata);
