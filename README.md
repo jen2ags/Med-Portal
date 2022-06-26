@@ -51,7 +51,7 @@ To install this application:
 https://github.com/jen2ags/Med-Portal
 
 ## Heroku Deployed Application
-https://ancient-ridge-51231.herokuapp.com/
+https://ancient-tor-23586.herokuapp.com/
 
 ## Screen Shot
 Login Screen:
